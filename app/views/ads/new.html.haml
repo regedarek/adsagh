@@ -1,0 +1,30 @@
+= form_for @ad do |f|
+  - if @ad.errors.any?
+    #form_errors
+      %h2
+        = @ad.errors.count
+        błędy przeszkodziły w zapisaniu ogłoszenia 
+      %ul
+        - @ad.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label "Nazwa"
+  = f.text_field :name
+  %br/
+  = f.label "Email"
+  = f.text_field :email
+  %br/
+  = f.label "Numer telefonu"
+  = f.text_field :phone_number
+  %br/
+  = f.label "tytuł"
+  = f.text_field :title
+  %br/
+  = f.label "Cena"
+  = f.text_field :price
+  %br/
+  = f.label "Treść ogłoszenia"
+  = f.text_area:ad_content
+  %br/
+  = f.submit "Dodaj ogłoszenie"
+
+= link_to "wróć", ads_path
