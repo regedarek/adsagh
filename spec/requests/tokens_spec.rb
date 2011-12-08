@@ -15,7 +15,7 @@ describe "Tokens" do
     # save_and_open_page
     current_path.should eql(root_path)
 
-    last_email.body.should include("Token")
+    last_email.body.should include(@ad.email)
 
   end
 end
