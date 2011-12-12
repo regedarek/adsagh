@@ -24,10 +24,17 @@ class AdsController < ApplicationController
 
   def confirm
     @ad = Ad.find(params[:id])
+    @advertiser = Advertiser.find_or_create_by_email(
+      :email => @ad.email,
+      :name => @ad.name,
+      :phone_number => @ad.phone_number
+    )
     if @ad.token == params[:token]
-      flash[:notice_item] = "brawo"
+      @ad.email_id = @advertiser.id
+      @ad.save
+      flash[:notice_item] = "potwierdzono" 
     else
-      flash[:notice_item] = "false"
+      flash[:notice_item] = "błędny kod potwierdzający"
     end
     redirect_to root_path
   end

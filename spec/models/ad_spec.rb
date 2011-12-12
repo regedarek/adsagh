@@ -65,7 +65,7 @@ describe Ad do
    #   ad_with_duplicate_email.should_not be_valid
    # end
 
- #   it "should reject email identical up to case" do
+   #   it "should reject email identical up to case" do
  #     upcased_email = @attr[:email].upcase
  #     Ad.create!(@attr.merge(:email => upcased_email))
  #     ad_with_duplicate_email = Ad.new(@attr)

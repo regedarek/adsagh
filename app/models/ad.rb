@@ -1,4 +1,6 @@
 class Ad < ActiveRecord::Base
+  belongs_to :advertiser
+
   attr_accessible :title, :name, :phone_number, :email, :email_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -8,8 +10,7 @@ class Ad < ActiveRecord::Base
   validates :title,        :presence   => true
   validates :name,         :length     => { :maximum => 50 }
   validates :email,        :presence   => true,
-                           :format     => { :with => email_regex },
-                           :uniqueness => { :case_sensitive => false } 
+                           :format     => { :with => email_regex }
   validates :ad_content,   :presence   => true
   validates :phone_number, :format     => { :with => phone_regex, :allow_blank => true }
   validates :price,        :format     => { :with => price_regex }
