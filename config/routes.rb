@@ -1,6 +1,10 @@
 Adsagh::Application.routes.draw do
-  resources :ads
-
+  resources :ads do    
+    member do
+      get 'confirm'
+    end
+  end
+  match ':controller/:action/:id/:token'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe "Tokens" do
-  it "emails user with token when he creates ad", :focus => true do
+  it "emails user with token when he creates ad" do
     visit new_ad_path
     fill_in "ad_title", :with => "fsdfsd" 
     fill_in "ad_ad_content", :with => "fsdfsd" 
@@ -15,7 +15,10 @@ describe "Tokens" do
     # save_and_open_page
     current_path.should eql(root_path)
 
-    last_email.body.should include(@ad.email)
-
+    last_email.to.should include("d@d.pl")
   end
+
+  # it "should confirm ad by email" do
+    
+  # end
 end
