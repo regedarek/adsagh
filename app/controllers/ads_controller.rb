@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class AdsController < ApplicationController
+  # params[:action] == 'show' ? 'show_wrapper' : 'everything_else_wrapper'
 
   def index
   	@ads = Ad.all
@@ -22,15 +23,13 @@ class AdsController < ApplicationController
   end
 
   def confirm
-    # params[:action] == 'show' ? 'show_wrapper' : 'everything_else_wrapper'
     @ad = Ad.find(params[:id])
     if @ad.token == params[:token]
       flash[:notice_item] = "brawo"
-      redirect_to root_path
     else
       flash[:notice_item] = "false"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def show

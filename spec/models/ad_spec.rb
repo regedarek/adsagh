@@ -59,18 +59,18 @@ describe Ad do
 
    end
 
-   it "should reject duplicate email addresses" do
-     Ad.create!(@attr)
-     ad_with_duplicate_email = Ad.new(@attr)
-     ad_with_duplicate_email.should_not be_valid
-   end
+   # it "should reject duplicate email addresses" do
+   #   Ad.create!(@attr)
+   #   ad_with_duplicate_email = Ad.new(@attr)
+   #   ad_with_duplicate_email.should_not be_valid
+   # end
 
-   it "should reject email identical up to case" do
-     upcased_email = @attr[:email].upcase
-     Ad.create!(@attr.merge(:email => upcased_email))
-     ad_with_duplicate_email = Ad.new(@attr)
-     ad_with_duplicate_email.should_not be_valid
-   end
+ #   it "should reject email identical up to case" do
+ #     upcased_email = @attr[:email].upcase
+ #     Ad.create!(@attr.merge(:email => upcased_email))
+ #     ad_with_duplicate_email = Ad.new(@attr)
+ #   ad_with_duplicate_email.should_not be_valid
+ # end
 
    it "should reject wrong phone_number" do
      phone = %w[kfksdfkds 543 0664435293 0126489384]
