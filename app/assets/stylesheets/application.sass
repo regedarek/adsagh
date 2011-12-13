@@ -1,0 +1,95 @@
+@import colors
+@import mixins
+@import simple_form
+
+body
+  background-color: $primary_color
+  font:
+    family: Helvetica, Arial
+    size: 14px
+
+a
+  color: $link_color  
+  img
+    border: none
+
+h1
+  color: #6C8A4A
+  font:
+    size: 32px
+    
+.clear
+  clear: both
+  height: 0
+  overflow: hidden
+
+#top
+  position: absolute
+  width: 100%
+  height: 40px
+  top: 0
+  background-color: #6C8A4A  
+  
+#container
+  width: 1200px
+  margin: 0 auto
+  margin-top: 20px
+    
+  
+#content
+  float: left
+  padding: 20px 40px  
+  width: 80%
+  background: white
+  @include radius 
+  @include shadow
+  
+
+#sidebar
+  float: left
+  margin:
+    right: 5px
+  width: 10%
+    
+
+
+#flash_notice,
+#flash_error,
+#flash_alert
+  padding: 5px 8px
+  margin: 10px 0
+
+#flash_notice
+  background-color: #ccffcc
+  border: solid 1px #66cc66
+
+#flash_error,
+#flash_alert
+  background-color: #ffcccc
+  border: solid 1px #cc6666
+
+.fieldWithErrors
+  display: inline
+
+.error_messages
+  width: 400px
+  border: 2px solid #cf0000
+  padding: 0
+  padding-bottom: 12px
+  margin-bottom: 20px
+  background-color: #f0f0f0
+  font:
+    size: 12px
+  h2
+    text-align: left
+    padding: 5px 5px 5px 15px
+    margin: 0
+    font:
+      weight: bold
+      size: 12px
+    background-color: #cc0000
+    color: white
+  p
+    margin: 8px 10px
+  ul
+    margin: 0

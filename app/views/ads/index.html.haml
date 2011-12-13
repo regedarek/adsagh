@@ -1,10 +1,11 @@
 %h1 Lista ogłoszeń
 
 - if @ads.empty?
-	brak ogłoszeń w bazie
+  brak ogłoszeń w bazie
 - else
-	- @ads.each do |ad|
-		= link_to(ad.title, ad_path(ad))
-		%br/
+  - @ads.each do |ad|
+    = link_to(ad.title, ad_path(ad))
+    %br
 
-= link_to "Dodaj ogłoszenie", new_ad_path
+- content_for :categories do
+  = link_to "Dodaj ogłoszenie", new_ad_path

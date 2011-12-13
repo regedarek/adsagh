@@ -1,5 +1,8 @@
 en:
   simple_form:
+    labels:
+      defaults:
+        name: "Nazwa ogłoszeniodawcy"
     "yes": 'Yes'
     "no": 'No'
     required:

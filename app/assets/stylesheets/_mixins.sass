@@ -1,0 +1,13 @@
+@mixin radius
+  $val: 5px
+  border-radius: $val
+  -moz-border-radius: $val
+  -webkit-border-radius: $val
+
+  
+  
+
+@mixin shadow($x:0px,$blur:15px, $color: $shadow_color)
+  -moz-box-shadow: $x $x $blur $color
+  -webkit-box-shadow: $x $x $blur $color
+  box-shadow: $x $x $blur $color

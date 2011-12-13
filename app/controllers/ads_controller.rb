@@ -6,13 +6,11 @@ class AdsController < ApplicationController
   	@ads = Ad.all
   end
 
-  def new
-  	@ad = Ad.new
+  def new    
+    @ad = Ad.new
   end
 
-  def create
-  	@ad = Ad.new(params[:ad])
-
+  def create    
     if @ad.save
       AdMailer.ad_token(@ad).deliver
       redirect_to root_path 
@@ -22,6 +20,7 @@ class AdsController < ApplicationController
   	end
   end
 
+  
   def confirm
     @ad = Ad.find(params[:id])
     @advertiser = Advertiser.find_or_create_by_email(
