@@ -10,7 +10,8 @@ class AdsController < ApplicationController
     @ad = Ad.new
   end
 
-  def create    
+  def create  
+    @ad = Ad.new(params[:ad]) 
     if @ad.save
       AdMailer.ad_token(@ad).deliver
       redirect_to root_path 
