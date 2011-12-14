@@ -10,6 +10,7 @@ gem 'jquery-rails'
 # Gemy potrzebne do działania aplikacji
 gem 'jquery-rails'
 gem 'therubyracer'
+gem 'ancestry'
 
 # Gemy wyglądu
 gem "haml-rails"

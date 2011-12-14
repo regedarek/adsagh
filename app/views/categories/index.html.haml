@@ -1,0 +1,9 @@
+- title "Kategorie"
+
+
+= nested_categories @categories
+  
+
+- content_for :content_menu do
+  = link_to "New Category", new_category_path
+

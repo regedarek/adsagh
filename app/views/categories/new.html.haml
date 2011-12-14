@@ -1,0 +1,8 @@
+- title "New Category"
+
+= render @category.parent if @category.parent
+
+= render 'form'
+
+- content_for :categories do
+  = link_to "Back to List", categories_path

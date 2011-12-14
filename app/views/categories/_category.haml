@@ -1,0 +1,10 @@
+.categories 
+  %ul
+    %li 
+      = category.name   
+
+      = link_to 'Edit', edit_category_path(category) 
+
+      = link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete 
+
+      = link_to "Add sub", new_category_path(:parent_id => category)

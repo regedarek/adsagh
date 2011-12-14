@@ -1,4 +1,6 @@
 Adsagh::Application.routes.draw do
+  resources :categories
+
   resources :ads do    
     member do
       get 'confirm'
