@@ -32,6 +32,7 @@ GEM
     addressable (2.2.6)
     ancestry (1.2.4)
       activerecord (>= 2.2.2)
+    ansi (1.4.1)
     arel (2.2.1)
     builder (3.0.0)
     capybara (1.1.2)
@@ -91,6 +92,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    minitest (2.8.1)
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
@@ -171,6 +173,8 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    turn (0.8.3)
+      ansi
     tzinfo (0.3.31)
     uglifier (1.1.0)
       execjs (>= 0.3.0)
@@ -193,6 +197,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   libnotify
+  minitest
   mongrel (>= 1.2.0.pre2)
   nifty-generators
   rails (= 3.1.1)
@@ -204,4 +209,5 @@ DEPENDENCIES
   sqlite3
   steak
   therubyracer
+  turn
   uglifier (>= 1.0.3)
