@@ -34,9 +34,7 @@ group :test do
   gem 'spork', ">0.9.0.rc"
   gem "guard-rspec"
   gem 'guard-spork'
-  gem 'guard-livereload'
-  gem "mocha"
-  gem 'cucumber-rails'
+  gem 'steak'
 end
 
 # gem 'delayed_job'
