@@ -3,7 +3,7 @@ class AdsController < ApplicationController
   # params[:action] == 'show' ? 'show_wrapper' : 'everything_else_wrapper'
 
   def index
-  	@ads = Ad.all
+    @ads = Ad.where("email_id IS NOT NULL AND verification_date IS NOT NULL")
   end
 
   def new    
