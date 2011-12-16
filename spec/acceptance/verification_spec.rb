@@ -2,7 +2,7 @@
 require 'acceptance/acceptance_helper'
 require 'spec_helper'
 
-feature 'Verification', :focus do
+feature 'Verification' do
 	background do
     @ad1 = Factory(:ad) 
     @ad2 = Factory(:ad, :email => "czesio2@example.com", :email_id => 2) 
