@@ -10,7 +10,7 @@ feature 'Sessions' do
 		before(:each) do
 			visit '/zaloguj'
 		end
-		scenario 'should have a username field', :focus do
+    scenario 'should have a username field' do
 			page.should have_content('Nazwa')
 		end
 		scenario 'should have a password field' do
