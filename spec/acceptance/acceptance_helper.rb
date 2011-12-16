@@ -7,10 +7,10 @@ require 'capybara/rails'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 def log_in(admin)
-  visit '/zaloguj'
-  fill_in('Nazwa', :with => admin.username)
-  fill_in('Hasło', :with => 'z')
-  click_button('Zaloguj')
+    visit '/zaloguj'
+    fill_in 'username', :with => admin.username
+    fill_in 'password', :with => "z"
+    click_button('Zaloguj')
 end
 
 def page!

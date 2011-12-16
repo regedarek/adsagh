@@ -10,3 +10,10 @@ Factory.define :ad do |f|
   f.phone_number "662284020"
   f.price "6,66"
 end
+
+Factory.define :admin do |a|
+  a.username 'rege'
+  a.email {|a| "#{a.username}@example.com".downcase }
+  a.password 'z'
+end
+
