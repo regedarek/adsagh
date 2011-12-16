@@ -25,9 +25,9 @@ feature 'Sessions' do
 	end
 
   context "User log out" do
-		scenario 'should be able to log out', :focus do
+		scenario 'should be able to log out' do
 			log_in admin
-			page.should have_content("Wyloguj")
+      page.should have_content("Wyloguj")
 			visit '/wyloguj'
       page.should have_content("Wylogowano pomyślnie")
 		end

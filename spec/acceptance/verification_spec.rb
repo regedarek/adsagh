@@ -9,11 +9,11 @@ feature 'Verification' do
     @admin = Factory(:admin)
 	end
 
-  scenario "access denied for guest", :focus do
-    visit verifications_path
-    page.should have_content "zaloguj się"
-  end
-	scenario "show me only confirm ads" do
+  # scenario "access denied for guest", :focus do
+  #   visit verifications_path
+  #   page.should have_content "zaloguj się"
+  # end
+  scenario "show me only confirm ads" do
     log_in @admin 
     visit verifications_path 
     page.should_not have_content @ad1.name
