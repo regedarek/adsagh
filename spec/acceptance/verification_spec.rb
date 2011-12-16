@@ -20,5 +20,8 @@ feature 'Verification' do
     page.should have_content @ad2.name
     page.should have_content @ad2.ad_content
 	end
-  scenario "confirm unverified ads"
+  scenario "confirm unverified ads" do
+    log_in @admin
+    
+  end
 end
