@@ -1,7 +1,12 @@
-FactoryGirl.define do
-	factory :admin do
-		sequence(:username) { |n| "rege#{n}" }
-		password "z"
-		email { "#{username}@example.com"}
-	end
+# encoding: UTF-8
+Factory.sequence :email do |n|
+  "czesio#{n}@example.com"
+end
+Factory.define :ad do |f|
+  f.sequence(:title) { |n| "Nerka#{n}" }
+  f.sequence(:name) { |n| "czesio#{n}" }
+  f.email { Factory.next(:email) }
+  f.sequence(:ad_content) { |n| "Ja Czesio#{n} piszę sobie tutaj ogłoszenie." }
+  f.phone_number "662284020"
+  f.price "6,66"
 end

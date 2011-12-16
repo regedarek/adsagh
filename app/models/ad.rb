@@ -15,7 +15,6 @@ class Ad < ActiveRecord::Base
   validates_numericality_of :price, :greater_than => 0, :less_than => 1000000  # http://stackoverflow.com/questions/4467224/rails-why-format-regex-validation-fails
   
   validates :price,         :presence =>true
-  
   before_create { generate_token(:token) }
   def generate_token(column)
     begin

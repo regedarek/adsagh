@@ -1,6 +1,6 @@
 Adsagh::Application.routes.draw do
   resources :categories
-
+  resources :verifications
   resources :ads do    
     member do
       get 'confirm'

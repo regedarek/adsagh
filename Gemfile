@@ -25,7 +25,6 @@ end
 # Gemy testów
 gem "rspec-rails", :group => [:test, :development]
 group :test do
-  gem 'turn'
   gem "factory_girl_rails"
   gem 'database_cleaner'
   gem "capybara"
@@ -36,6 +35,5 @@ group :test do
   gem "guard-rspec"
   gem 'guard-spork'
   gem 'steak'
-  gem "minitest"
 end
 
