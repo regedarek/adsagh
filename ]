@@ -1,0 +1,17 @@
+# encoding: UTF-8
+require 'acceptance/acceptance_helper'
+require 'spec_helper'
+
+feature 'Verification' do
+	background do
+    @ad1 = Factory(:ad) 
+    @ad2 = Factory(:ad, :email_id => "2") 
+	end
+	scenario "show me only confirm ads" do
+    visit verifications_path 
+		page.should have_content @ad1.ad_content 
+    save_and_open_page
+    page.should have_content @ad2.email_id
+    page.should have_content @ad2.name
+	end
+end
