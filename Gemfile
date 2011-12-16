@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'jquery-rails'
 gem 'therubyracer'
 gem 'ancestry'
+gem 'sorcery'
 
 # Gemy wyglądu
 gem "haml-rails"

@@ -1,4 +1,8 @@
 Adsagh::Application.routes.draw do
+  resources :sessions
+  get "zaloguj" => "sessions#new", :as => "zaloguj"
+  get "wyloguj" => "sessions#destroy", :as => "wyloguj"
+
   resources :categories
   resources :verifications
   resources :ads do    
