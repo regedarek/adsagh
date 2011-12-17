@@ -13,6 +13,7 @@ feature 'Verification' do
     visit verifications_path
     page.should have_content "Musisz być zalogowany!"
   end
+  
   scenario "show me only confirm ads" do
     log_in @admin 
     current_path.should eql(verifications_path)
@@ -20,6 +21,7 @@ feature 'Verification' do
     page.should have_content @ad2.name
     page.should have_content @ad2.ad_content
 	end
+  
   scenario "confirm unverified ad" do
     visit root_path
     page.should_not have_content @ad2.ad_content
@@ -33,12 +35,15 @@ feature 'Verification' do
     visit root_path
     page.should have_content @ad2.title
   end
-  scenario "discard unverified ad" do
+
+  scenario "discard unverified ad", :focus do
     log_in @admin
     page.should have_content @ad2.name
     click_link "Odrzuć"
     # page.should have_content("Powód:")
-    # last_email.body.should
+    # fill_in "Powód", :with => "bo nie"
+    # click_button "Wyślij"
+    # last_email.body.should include("bo nie")
     current_path.should eql(verifications_path)
     page.should have_content("Odrzucono ogłoszenie!")
     page.should_not have_content @ad2.name

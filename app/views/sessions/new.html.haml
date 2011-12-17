@@ -1,3 +1,4 @@
+// nie da się tutaj użyć simple_form bo jest beznadziejne :)
 %h1 Log in
 = form_tag sessions_path do
   .field
@@ -7,7 +8,4 @@
     = label_tag :password
     = password_field_tag :password
   .actions= submit_tag "Zaloguj"
--# = simple_form_for sessions_path do |f|
--#   = f.input :username
--#   = f.input :password
--#   = f.button :submit, "Zaloguj"
+

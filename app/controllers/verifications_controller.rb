@@ -12,7 +12,7 @@ class VerificationsController < ApplicationController
     flash[:notice] = "Zweryfikowano pomyślnie!"
   end
 
-  def discard
+  def discard 
     @ad = Ad.find(params[:id])
     @ad.destroy
     redirect_to verifications_path
