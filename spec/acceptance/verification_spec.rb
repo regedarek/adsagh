@@ -20,7 +20,7 @@ feature 'Verification' do
     page.should_not have_content @ad1.name
     page.should have_content @ad2.name
     page.should have_content @ad2.ad_content
-	end
+  end
   
   scenario "confirm unverified ad" do
     visit root_path
@@ -36,7 +36,7 @@ feature 'Verification' do
     page.should have_content @ad2.title
   end
 
-  scenario "discard unverified ad", :focus do
+  scenario "discard unverified ad" do
     log_in @admin
     page.should have_content @ad2.name
     click_link "Odrzuć"

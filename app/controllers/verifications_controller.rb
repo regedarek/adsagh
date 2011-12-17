@@ -14,7 +14,10 @@ class VerificationsController < ApplicationController
 
   def discard 
     @ad = Ad.find(params[:id])
+    @discard_info = "bo sie nie nadaje"
+    if AdMailer.why_discard(@ad, @discard_info).deliver
     @ad.destroy
+    end
     redirect_to verifications_path
     flash[:notice] = "Odrzucono ogłoszenie!"
   end

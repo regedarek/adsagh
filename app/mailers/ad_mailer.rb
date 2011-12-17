@@ -8,7 +8,10 @@ class AdMailer < ActionMailer::Base
   #
   def ad_token(ad)
     @ad = ad
-
     mail :to => ad.email, :subject => "token" 
+  end
+  def why_discard(ad, discard_info)
+    @discard_info = discard_info
+    mail(:to => ad.email, :subject => "Dlaczego odrzucone")
   end
 end
