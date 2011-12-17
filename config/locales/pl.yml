@@ -16,6 +16,11 @@ pl:
   confirm: "Czy jesteś pewien ?"
   back: "Cofnij"
 
+  categories:
+    index:
+      description: "Wybierz jedną z dostępnych po lewej stronie głównych kategori."
+      new_category: "Nowa kategoria"
+
       
   errors:
     format: "%{attribute} %{message}"      

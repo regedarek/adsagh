@@ -1,17 +1,41 @@
 .categories
   font-size: 18px
+  width: 80%
+  margin: 0 auto
+  @include radius
+  border: 1px solid $border_color
 
-.category
-  margin: 5px
-  a
-    font-size: 70%
+  .roots_categories
+    padding: 10px
+    width: 30%
+    vertical-align: top
+    display: inline-block
+    
+  .description
+    margin: 60px
+    font-size: 14px
+    color: gray
+    text-align: center
 
-.nested_categories
-  font-size: 16px
-  margin:
-    left: 20px
-    bottom: 0
-    top: 0
+  .sub_categories
+    width: 60%
+    display: inline-block
+    min-height: 200px
+    border-left: 1px solid $border_color
+    padding: 10px 10px 10px 20px
+    margin-left: 20px
+
+  .category
+    margin: 5px
+    a
+      font-size: 70%
+
+  .nested_categories
+    margin:
+      left: 20px
+      bottom: 0
+      top: 0
+
 
 
 

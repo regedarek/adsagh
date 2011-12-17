@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   def index
+    @roots = Category.where("ancestry IS NULL")
     @categories = Category.arrange(:order=>:created_at)
   end
   

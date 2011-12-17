@@ -1,9 +1,18 @@
 - title "Kategorie"
 
 .categories
-  = nested_categories @categories
+
+
+  .roots_categories
+    =render :partial=> 'root'
+
+
+  .sub_categories
+    .description
+      =t '.description'
+    = nested_categories @categories
   
 
 - content_for :content_menu do
-  = link_to "New Category", new_category_path
+  = link_to t(".new_category"), new_category_path
 
