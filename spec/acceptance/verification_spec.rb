@@ -9,17 +9,31 @@ feature 'Verification' do
     @admin = Factory(:admin)
 	end
 
-  # scenario "access denied for guest", :focus do
-  #   visit verifications_path
-  #   page.should have_content "zaloguj się"
-  # end
+  scenario "access denied for guest" do
+    visit verifications_path
+    page.should have_content "Musisz być zalogowany!"
+  end
   scenario "show me only confirm ads" do
     log_in @admin 
-    visit verifications_path 
+    current_path.should eql(verifications_path)
     page.should_not have_content @ad1.name
     page.should have_content @ad2.name
     page.should have_content @ad2.ad_content
 	end
-  scenario "confirm unverified ads" do
+  scenario "confirm unverified ad" do
+    visit root_path
+    page.should_not have_content @ad2.ad_content
+    log_in @admin
+    current_path.should eql(verifications_path)
+    page.should have_content @ad2.name
+    page.should have_content @ad2.ad_content
+    click_link "Weryfikuj"
+    current_path.should eql(verifications_path)
+    page.should have_content("Zweryfikowano pomyślnie!")
+    visit root_path
+    page.should have_content @ad2.title
+  end
+  scenario "discard unverified ad", :focus do
+    log_in @admin
   end
 end
