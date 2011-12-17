@@ -7,6 +7,7 @@ Adsagh::Application.routes.draw do
   resources :verifications do
     member do
       put 'verify'
+      get 'discard'
     end
   end
   resources :ads do    
