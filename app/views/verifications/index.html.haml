@@ -8,4 +8,6 @@ Ogłoszenia do zweryfikowania:
   %br
     = ad.ad_content
     = link_to "Weryfikuj", verify_verification_path(ad), :method => :put 
+    |
+    = link_to "Odrzuć", verification_path(ad), :method => :delete
   %br

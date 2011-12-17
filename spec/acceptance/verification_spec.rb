@@ -35,5 +35,10 @@ feature 'Verification' do
   end
   scenario "discard unverified ad", :focus do
     log_in @admin
+    page.should have_content @ad2.name
+    click_link "Odrzuć"
+    current_path.should eql(verifications_path)
+    page.should have_content("Odrzucono ogłoszenie!")
+    page.should_not have_content @ad2.name
   end
 end

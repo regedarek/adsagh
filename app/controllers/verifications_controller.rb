@@ -12,4 +12,10 @@ class VerificationsController < ApplicationController
     flash[:notice] = "Zweryfikowano pomyślnie!"
   end
 
+  def destroy
+    @ad = Ad.find(params[:id])
+    @ad.destroy
+    redirect_to verifications_path
+    flash[:notice] = "Odrzucono ogłoszenie!"
+  end
 end
