@@ -14,7 +14,7 @@ feature 'Sessions' do
     scenario 'succesfully' do
       log_in admin 
       page.should have_content 'Zalogowano pomyślnie!'
-      current_path.should == root_path
+      current_path.should == verifications_path
     end
 
     scenario 'unsuccesfully' do

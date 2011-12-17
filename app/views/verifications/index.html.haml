@@ -1,8 +1,11 @@
+%br
+Ogłoszenia do zweryfikowania:
 - @ads.each do |ad|
   %b
     = ad.name
   %i
     = ad.email
   %br
-    = ad.ad_content 
+    = ad.ad_content
+    = link_to "Weryfikuj", verify_verification_path(ad), :method => :put 
   %br
