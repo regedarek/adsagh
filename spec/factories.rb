@@ -1,6 +1,6 @@
 # encoding: UTF-8
 Factory.sequence :email do |n|
-  "czesio#{n}@example.com"
+  "czesioo#{n}@example.com"
 end
 Factory.define :ad do |f|
   f.sequence(:title) { |n| "Nerka#{n}" }

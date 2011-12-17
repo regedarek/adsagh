@@ -5,7 +5,7 @@ require 'spec_helper'
 feature 'Verification' do
   background do
     @ad1 = Factory(:ad) 
-    @ad2 = Factory(:ad, :email => "czesio2@example.com", :email_id => 2) 
+    @ad2 = Factory(:ad, :email => "czesio_drugi@example.com", :email_id => 2) 
     @admin = Factory(:admin)
 	end
 
@@ -33,7 +33,14 @@ feature 'Verification' do
     visit root_path
     page.should have_content @ad2.title
   end
-  scenario "discard unverified ad", :focus do
+  scenario "discard unverified ad" do
     log_in @admin
+    page.should have_content @ad2.name
+    click_link "Odrzuć"
+    # page.should have_content("Powód:")
+    # last_email.body.should
+    current_path.should eql(verifications_path)
+    page.should have_content("Odrzucono ogłoszenie!")
+    page.should_not have_content @ad2.name
   end
 end
