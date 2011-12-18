@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class AdMailer < ActionMailer::Base
   default from: "from@example.com"
 
@@ -10,6 +11,12 @@ class AdMailer < ActionMailer::Base
     @ad = ad
     mail :to => ad.email, :subject => "token" 
   end
+
+  def send_edit_link(ad)
+    @ad = ad
+    mail :to => ad.email, :subject => "Edytuj ogłoszenie" 
+  end
+
   def why_discard(ad, discard_info)
     @discard_info = discard_info
     mail(:to => ad.email, :subject => "Dlaczego odrzucone")

@@ -10,14 +10,14 @@ class VerificationsController < ApplicationController
     @ad.update_attribute :verification_date, Time.now
     redirect_to verifications_path
     flash[:notice] = "Zweryfikowano pomyślnie!"
+    @ad.send_edit_link
   end
 
   def discard 
     @ad = Ad.find(params[:id])
     @discard_info = "bo sie nie nadaje"
-    if AdMailer.why_discard(@ad, @discard_info).deliver
+    AdMailer.why_discard(@ad, @discard_info).deliver
     @ad.destroy
-    end
     redirect_to verifications_path
     flash[:notice] = "Odrzucono ogłoszenie!"
   end

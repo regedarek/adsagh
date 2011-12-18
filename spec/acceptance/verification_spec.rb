@@ -1,6 +1,5 @@
 # encoding: UTF-8
 require 'acceptance/acceptance_helper'
-require 'spec_helper'
 
 feature 'Verification' do
   background do
@@ -22,7 +21,7 @@ feature 'Verification' do
     page.should have_content @ad2.ad_content
   end
   
-  scenario "confirm unverified ad" do
+scenario "confirm unverified ad" do
     visit root_path
     page.should_not have_content @ad2.ad_content
     log_in @admin
@@ -32,6 +31,7 @@ feature 'Verification' do
     click_link "Weryfikuj"
     current_path.should eql(verifications_path)
     page.should have_content("Zweryfikowano pomyślnie!")
+    last_email.to.should include(@ad2.email)
     visit root_path
     page.should have_content @ad2.title
   end

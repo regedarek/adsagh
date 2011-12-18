@@ -20,7 +20,6 @@ class AdsController < ApplicationController
       render :action => "new"
   	end
   end
-
   
   def confirm
     @ad = Ad.find(params[:id])
@@ -37,6 +36,16 @@ class AdsController < ApplicationController
       flash[:notice_item] = "błędny kod potwierdzający"
     end
     redirect_to root_path
+  end
+
+  def edit
+    @ad = Ad.find(params[:id])
+  end
+
+  def update
+    @ad = Ad.find(params[:id])
+    @ad.update_attributes(params[:ad])
+    redirect_to @ad, :notice => "Zaktualizowano!"  
   end
 
   def show

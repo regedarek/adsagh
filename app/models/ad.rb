@@ -12,11 +12,15 @@ class Ad < ActiveRecord::Base
                            :format     => { :with => email_regex },
                            :uniqueness => { :case_sensitive => false }   
   validates :ad_content,   :presence   => true
-  
   validates_numericality_of :price, :greater_than => 0, :less_than => 1000000  # http://stackoverflow.com/questions/4467224/rails-why-format-regex-validation-fails
-  
   validates :price,         :presence =>true
+
   before_create { generate_token(:token) }
+  
+  def send_edit_link
+      AdMailer.send_edit_link(self).deliver
+  end
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

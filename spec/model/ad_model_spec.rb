@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Ad do
-
+describe "Ad" do
+  let(:ad) { Factory(:ad) }
    before(:each) do
      @attr = { :title => "Nerka",
                :name => "Czesio",
@@ -72,27 +72,21 @@ describe Ad do
      ad_with_duplicate_email.should_not be_valid
    end
 
-   # it "should reject wrong phone_number" do
-   #    phone = %w[kfksdfkds 543 0664435293 0126489384]
-   #    phone.each do |n|
-   #      invalid_phone_n = Ad.new(@attr.merge(:phone_number => n))
-   #      invalid_phone_n.should_not be_valid
-   #    end
-   # end
-
-  it "should be display_counter null" do
+    it "should be display_counter null" do
       Ad.create!(@attr) 
       display_counter = @attr[:display_counter]
       display_counter.should be_nil
+    end
+
+  it "should delivers email to advertiser" do
+    ad.send_edit_link
+    last_email.to.should include(ad.email)
   end
 
-  # it "price should not be empty" do
-  #     no_price_ad = Ad.new(@attr.merge(:price => ""))
-  #     no_price_ad.should_not be_valid
-  # end
-   # W sumie to jest sprawdzane w request_spec
-   # it "should require a token" do
-   #    no_token_ad = Ad.new(@attr.merge(:token => ""))
-   #    no_token_ad.should_not be_valid
-   # end
+  it "generates a unique token each time" do
+    ad1 = Factory.create(:ad)
+    ad2 = Factory.create(:ad)
+    ad2.token.should_not eq(ad1.token)
+  end
 end
+ 

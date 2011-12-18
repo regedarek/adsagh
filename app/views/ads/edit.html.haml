@@ -1,0 +1,15 @@
+%h1
+	Edytuj ogłoszenie
+
+= form_for @ad do |f| 
+	%p
+		= f.label :title
+		= f.text_field :title
+	%p
+		= f.label :ad_content
+		= f.text_field :ad_content
+	%p
+		= f.label :price
+		= f.text_field :price
+	%p.button
+		= f.submit

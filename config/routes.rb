@@ -6,6 +6,7 @@ Adsagh::Application.routes.draw do
   resources :categories
   resources :verifications do
     member do
+      get 'verify'
       put 'verify'
       put 'discard'
       get 'discard'
