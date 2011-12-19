@@ -34,7 +34,6 @@ end
 
 Spork.each_run do
   $rspec_start_time = Time.now  
-  FactoryGirl.reload
 end
 
 

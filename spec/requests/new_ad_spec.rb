@@ -1,25 +1,34 @@
 # encoding: UTF-8
 require 'spec_helper'
+require './sham/ad_sham'
 
 describe "New ad specs" do
-    let!(:advertiser) { FactoryGirl.create(:advertiser) }
-    # let!(:ad1) { FactoryGirl.create(:ad, :email => "czesio@gmail.com", :email_id => advertiser.id, :verification_date => Time.now) }
-    # let!(:ad2) { FactoryGirl.create(:ad, :email => "czesio2@gmail.com", :email_id => advertiser.id, :verification_date => Time.now) }
-  before(:all) do
+ before(:all) do
     @ads = []
-    # 3.times{ @ads << FactoryGirl.create(:ad, :email_id => 1, :verification_date => Time.now) }
+    3.times{ @ads << Ad.sham!(:email_id => 1, :verification_date => Time.now) }
   end
-  describe "aa" do
+
+  describe "On the root_path" do
     it "listing all ads" do
-      visit ads_path
-      # within(".title") do
-      #   page.should have_content("Lista ogłoszeń")
-      # end
-      # page.has_selector?(".ad", :count => 2).should be_true
-      # page.should have_css(".ad", :content => )
+      visit root_path
+      page.has_selector?(".title", :text => "Lista ogłoszeń").should be_true
+      page.has_selector?(".ad", :count => 3).should be_true
       @ads.each do |ad|
-        page.should have_content(ad.title)
+        page.should have_css(".ad", :text => ad.title )
       end
+    end
+
+    it "creates a new ad" do
+      visit root_path
+      click_on "Dodaj ogłoszenie"
+      fill_in 'Title', :with => 'Nerka do sprzedania'
+      fill_in 'Ad content', :with => 'sprzedam nieswoja nerke'
+      fill_in 'Name', :with => 'Czesio'
+      fill_in 'Email', :with => 't@t6.pl' 
+      fill_in 'Price', :with => '9,76'
+      click_on 'Dodaj ogłoszenie'
+      current_path.should eq(root_path)
+      flash_notice!("Ogłoszenie przekazane do weryfikacji")
     end
   end
 end
