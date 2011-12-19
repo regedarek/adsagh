@@ -1,6 +1,5 @@
 # encoding: UTF-8
 require 'spec_helper'
-require './sham/ad_sham'
 
 describe "New ad specs" do
  before(:all) do
@@ -11,8 +10,8 @@ describe "New ad specs" do
   describe "On the root_path" do
     it "listing all ads" do
       visit root_path
-      page.has_selector?(".title", :text => "Lista ogłoszeń").should be_true
-      page.has_selector?(".ad", :count => 3).should be_true
+      page.should have_selector(".title", :text => "Lista ogłoszeń")
+      page.should have_selector(".ad", :count => 3)
       @ads.each do |ad|
         page.should have_css(".ad", :text => ad.title )
       end

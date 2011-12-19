@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Ad" do
-  let(:ad) { Factory(:ad) }
+  let(:ad) { Ad.sham! }
    before(:each) do
      @attr = { :title => "Nerka",
                :name => "Czesio",
@@ -84,8 +84,8 @@ describe "Ad" do
   end
 
   it "generates a unique token each time" do
-    ad1 = Factory.create(:ad)
-    ad2 = Factory.create(:ad)
+    ad1 = Ad.sham!
+    ad2 = Ad.sham!
     ad2.token.should_not eq(ad1.token)
   end
 end

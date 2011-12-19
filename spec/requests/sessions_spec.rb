@@ -1,23 +1,22 @@
 # encoding: UTF-8
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
-
-feature 'Sessions' do
+describe 'Sessions' do
   let :admin do
-    Factory :admin
+    Admin.sham!
   end
   let :invalid_admin do
     mock :admin, { :username => "invalid_username", :password => "s" }
   end
 
 	context "User logs in" do
-    scenario 'succesfully' do
+    it 'succesfully' do
       log_in admin 
       page.should have_content 'Zalogowano pomyślnie!'
       current_path.should == verifications_path
     end
 
-    scenario 'unsuccesfully' do
+    it 'unsuccesfully' do
       log_in invalid_admin 
       page.should have_content 'Źle wpisałeś nazwę lub hasło!'
       current_path.should == sessions_path
@@ -25,7 +24,7 @@ feature 'Sessions' do
 	end
 
   context "User log out" do
-		scenario 'should be able to log out' do
+		it 'should be able to log out' do
 			log_in admin
       page.should have_content("Wyloguj")
 			visit '/wyloguj'

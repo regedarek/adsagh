@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe AdMailer do
-	let(:ad) { Factory(:ad) }
+	let(:ad) { Ad.sham! }
 	let(:mail) { AdMailer.send_edit_link(ad) }
 
 	it "should send edit link" do

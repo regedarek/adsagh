@@ -8,7 +8,6 @@ gem 'jquery-rails'
 
 
 # Gemy potrzebne do działania aplikacji
-gem 'jquery-rails'
 gem 'therubyracer'
 gem 'ancestry'
 gem 'sorcery'
@@ -26,7 +25,6 @@ end
 # Gemy testów
 gem "rspec-rails", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
   gem 'database_cleaner'
   gem "capybara"
   gem 'libnotify', :require => false
@@ -35,7 +33,6 @@ group :test do
   gem 'spork', ">0.9.0.rc"
   gem "guard-rspec"
   gem 'guard-spork'
-  gem 'steak'
   gem 'sham'
 end
 
