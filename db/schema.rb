@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20111216183927) do
     t.string   "token"
     t.date     "verification_date"
     t.integer  "category_id"
-    t.integer  "admin_id"
     t.decimal  "price",             :precision => 6, :scale => 2
     t.integer  "display_counter",                                 :default => 0
     t.datetime "created_at"
@@ -55,5 +54,20 @@ ActiveRecord::Schema.define(:version => 20111216183927) do
   end
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
 end

@@ -6,11 +6,12 @@
       || TablicAGH.pl
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
     = stylesheet_link_tag :application
-    = javascript_include_tag "http://code.jquery.com/jquery-1.7.1.min.js", :categories
+    = javascript_include_tag :application
     = csrf_meta_tag
     = yield(:head)
 
   %body
+    .black_mamba
     #container
       #sidebar
         %br

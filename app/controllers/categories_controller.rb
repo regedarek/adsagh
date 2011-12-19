@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  
+  layout :resolve_layout
+  
   def index
     @roots = Category.where("ancestry IS NULL")
     @categories = Category.arrange(:order=>:created_at)
@@ -37,3 +40,14 @@ class CategoriesController < ApplicationController
     redirect_to categories_url, :notice => "Successfully destroyed category."
   end
 end
+
+private
+
+ def resolve_layout
+   case params[:layout]
+   when "minimalistic"
+     "minimalistic"
+   else
+     "application"
+   end
+ end
