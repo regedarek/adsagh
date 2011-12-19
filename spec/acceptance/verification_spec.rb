@@ -40,10 +40,10 @@ scenario "confirm unverified ad" do
     log_in @admin
     page.should have_content @ad2.name
     click_link "Odrzuć"
-    # page.should have_content("Powód:")
-    # fill_in "Powód", :with => "bo nie"
-    # click_button "Wyślij"
-    # last_email.body.should include("bo nie")
+    page.should have_content("Powód:")
+    fill_in "Powód", :with => "bo nie"
+    click_button "Wyślij"
+    last_email.body.should include("bo nie")
     current_path.should eql(verifications_path)
     page.should have_content("Odrzucono ogłoszenie!")
     page.should_not have_content @ad2.name

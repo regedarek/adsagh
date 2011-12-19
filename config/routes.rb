@@ -10,6 +10,7 @@ Adsagh::Application.routes.draw do
       put 'verify'
       put 'discard'
       get 'discard'
+      put 'discard_info'
     end
   end
   resources :ads do    

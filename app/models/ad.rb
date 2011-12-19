@@ -1,5 +1,6 @@
 class Ad < ActiveRecord::Base
   belongs_to :advertiser
+  belongs_to :admin
 
   attr_accessible :title, :name, :phone_number, :email, :email_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter
 
@@ -18,7 +19,11 @@ class Ad < ActiveRecord::Base
   before_create { generate_token(:token) }
   
   def send_edit_link
-      AdMailer.send_edit_link(self).deliver
+    AdMailer.send_edit_link(self).deliver
+  end
+
+  def send_discard_info(discard_info)
+    AdMailer.why_discard(self, discard_info).deliver
   end
 
   def generate_token(column)

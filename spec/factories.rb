@@ -9,8 +9,12 @@ Factory.define :ad do |f|
   f.sequence(:ad_content) { |n| "Ja Czesio#{n} piszę sobie tutaj ogłoszenie." }
   f.phone_number "662284020"
   f.price "6,66"
+  f.association :advertiser
 end
-
+Factory.define :advertiser do |a|
+  a.sequence(:name) { |n| "czesio#{n}" }
+  a.email { Factory.next(:email) }
+end
 Factory.define :admin do |a|
   a.username 'rege'
   a.email {|a| "#{a.username}@example.com".downcase }

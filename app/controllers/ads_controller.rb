@@ -29,8 +29,7 @@ class AdsController < ApplicationController
       :phone_number => @ad.phone_number
     )
     if @ad.token == params[:token]
-      @ad.email_id = @advertiser.id
-      @ad.save
+      @ad.update_attribute :email_id, @advertiser.id
       flash[:notice_item] = "potwierdzono" 
     else
       flash[:notice_item] = "błędny kod potwierdzający"
@@ -44,7 +43,9 @@ class AdsController < ApplicationController
 
   def update
     @ad = Ad.find(params[:id])
+    # @ad.verification_date = nil
     @ad.update_attributes(params[:ad])
+    @ad.update_attributes(:verification_date => nil)
     redirect_to @ad, :notice => "Zaktualizowano!"  
   end
 
