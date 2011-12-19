@@ -1,23 +1,26 @@
 # encoding: UTF-8
-Factory.sequence :email do |n|
-  "czesioo#{n}@example.com"
-end
-Factory.define :ad do |f|
-  f.sequence(:title) { |n| "Nerka#{n}" }
-  f.sequence(:name) { |n| "czesio#{n}" }
-  f.email { Factory.next(:email) }
-  f.sequence(:ad_content) { |n| "Ja Czesio#{n} piszę sobie tutaj ogłoszenie." }
-  f.phone_number "662284020"
-  f.price "6,66"
-  f.association :advertiser
-end
-Factory.define :advertiser do |a|
-  a.sequence(:name) { |n| "czesio#{n}" }
-  a.email { Factory.next(:email) }
-end
-Factory.define :admin do |a|
-  a.username 'rege'
-  a.email {|a| "#{a.username}@example.com".downcase }
-  a.password 'z'
-end
+FactoryGirl.define do
+  factory :ad do |f|
+    f.title { "Nerka#{rand(10000)}" }
+    f.name { "czesio#{rand(10000)}" }
+    f.email { "czesio#{rand(100000)}@example.com" }
+    f.ad_content { "Ja czesio#{rand(100000)} piszę sobie tutaj ogłoszenie." }
+    f.phone_number "662284020"
+    f.price "6,66"
+    f.advertiser {|u| u.association(:advertiser)}
+    f.admin {|a| a.association(:admin)}
+    # f.email_id 1
+    # f.verification_date Time.now
+  end
 
+  factory :advertiser do |a|
+    a.name { "czesio#{rand(10000)}" }
+    a.email { "czesio#{rand(100000)}@example.com" }
+  end
+
+  factory :admin do |a|
+    a.username 'rege'
+    a.email { "rege#{rand(100000)}@example.com" }
+    a.password 'z'
+  end
+end
