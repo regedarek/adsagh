@@ -21,7 +21,7 @@ feature 'Verification' do
     page.should have_content @ad2.ad_content
   end
   
-scenario "confirm unverified ad" do
+  scenario "confirm unverified ad" do
     visit root_path
     page.should_not have_content @ad2.ad_content
     log_in @admin
