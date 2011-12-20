@@ -6,5 +6,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-ad = Admin.create(:username => 'rege', :password => 'z', :email => 'd@d.pl')
-category = Ad.create(:name => 'Ogłoszenie 1', :title => 'Tytuł1', :name => 'Czesio1', :email => 'czesio@agh.pl', :ad_content =>'Lorem ipsum', :price => '4')
+admin = Admin.create(:username => 'rege', :password => 'z', :email => 'rege@agh.pl')
+ad1 = Ad.create(
+								:title => 'Ogłoszenie niepotwierdzone',
+								:name => 'Czesio1',
+								:email => 'czesio@agh.pl',
+								:ad_content =>'Lorem ipsum',
+								:price => '4'
+      )
+ad2 = Ad.create(
+								:name => 'Ogłoszenie niezweryfikowane',
+								:title => 'Tytuł1',
+								:name => 'Czesio1',
+								:email => 'czesio@agh.pl',
+								:ad_content =>'Lorem ipsum',
+								:price => '4',
+								:advertiser_id => 1
+      )
+ad3 = Ad.create(
+								:name => 'Ogłoszenie potwierdzone i zweryfikowane',
+								:title => 'Tytuł1',
+								:name => 'Czesio1',
+								:email => 'czesio@agh.pl',
+								:ad_content =>'Lorem ipsum',
+								:price => '4',
+								:advertiser_id => 1
+								:verification_date = Time.now
+      )
+advertiser = (:name => ad1.name, :email => ad1.email)
