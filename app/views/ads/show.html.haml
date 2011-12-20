@@ -1,31 +1,24 @@
-%b
-  Tytuł:
--# %br/
-= @ad.title
-%br/
-%b
-  Treść ogłoszenia:
--# %br/
-= @ad.ad_content
-%br/
-%b
-  Imię i nazwisko: 
--# %br/
-= @ad.name
-%br/
-%b
-  Email: 
--# %br/
-= @ad.email
-%br/
-%b
-  Cena: 
--# %br/
-= @ad.price
-%br/
-%b
-  Liczba wyświetleń:
--# %br/
-= @ad.display_counter
-%br/
-= link_to "wróć", ads_path
+#title
+	%h1
+		= @ad.title
+#ad_content
+	%b Treść ogłoszenia:
+	= @ad.ad_content
+%br
+#name
+	%b Imię i nazwisko: 
+	= @ad.name
+%br
+#email
+	%b Email: 
+	= @ad.email
+%br
+#price
+	%b Cena: 
+	= @ad.price
+%br
+#display_counter
+	%b Liczba wyświetleń:
+	= @ad.display_counter
+%br
+	= link_to "wróć", ads_path

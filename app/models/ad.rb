@@ -2,7 +2,7 @@ class Ad < ActiveRecord::Base
   belongs_to :advertiser
   belongs_to :admin
 
-  attr_accessible :title, :name, :phone_number, :email, :email_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter
+  attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   

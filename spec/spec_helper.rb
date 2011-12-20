@@ -19,9 +19,11 @@ Spork.prefork do
     config.include(MailerMacros)
     config.before(:each) { reset_email }
     DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
     config.before(:each) do
     end
-    config.after(:each) do
+    config.after(:all) do
+      DatabaseCleaner.clean
     end
   end
 end
@@ -31,7 +33,6 @@ Spork.each_run do
   ActiveSupport::Dependencies.clear
   ActiveRecord::Base.instantiate_observers
   Sham::Config.activate!
-  DatabaseCleaner.clean
 end
 
 
