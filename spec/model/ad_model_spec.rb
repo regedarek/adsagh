@@ -93,7 +93,6 @@ describe Ad do
     advertiser = Advertiser.sham!
     ad3 = Ad.sham!(:advertiser_id => advertiser.id)
     ad3.advertiser_id == ad3.advertiser.id
-    
   end
 
 end
