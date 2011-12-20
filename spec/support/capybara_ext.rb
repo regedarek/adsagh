@@ -20,8 +20,14 @@ module CapybaraExt
     end
   end
   
-  def flash_notice!(text)
+  def flash_notice_item!(text)
     within("#flash_notice_item") do
+      assert_seen(text)
+    end
+  end
+
+  def flash_notice!(text)
+    within("#flash_notice") do
       assert_seen(text)
     end
   end

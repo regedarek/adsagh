@@ -3,8 +3,7 @@ require 'spec_helper'
 
 describe "New ad specs" do
  before(:all) do
-    @ads = []
-    3.times{ @ads << Ad.sham!(:email_id => 1, :verification_date => Time.now) }
+    @ads = Array.new(3) { Ad.sham!(:email_id => 1, :verification_date => Time.now) } 
   end
 
   describe "On the root_path" do
@@ -27,7 +26,7 @@ describe "New ad specs" do
       fill_in 'Price', :with => '9,76'
       click_on 'Dodaj ogłoszenie'
       current_path.should eq(root_path)
-      flash_notice!("Ogłoszenie przekazane do weryfikacji")
+      flash_notice_item!("Ogłoszenie przekazane do weryfikacji")
     end
   end
 end

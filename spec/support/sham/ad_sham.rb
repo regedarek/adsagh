@@ -7,6 +7,6 @@ Sham.config(Ad) do |a|
       :name => "Czesio#{rand(10)}",
       :ad_content => "Ja czesio#{rand(10)} piszę sobie tutaj ogłoszenie.",
       :price => "#{rand(10)}.44" 
-      }
+    }
   end
 end

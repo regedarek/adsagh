@@ -43,11 +43,11 @@ end
 
 private
 
- def resolve_layout
-   case params[:layout]
-   when "minimalistic"
-     "minimalistic"
-   else
-     "application"
-   end
+def resolve_layout
+ case params[:layout]
+ when "minimalistic"
+   "minimalistic"
+ else
+   "application"
  end
+end
