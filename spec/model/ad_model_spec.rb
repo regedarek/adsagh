@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Ad" do
+describe Ad do
   let(:ad) { Ad.sham! }
    before(:each) do
      @attr = { :title => "Nerka",
@@ -88,5 +88,11 @@ describe "Ad" do
     ad2 = Ad.sham!
     ad2.token.should_not eq(ad1.token)
   end
+
+  it "retrives the ad owner" do
+    advertiser = Advertiser.sham!
+    ad3 = Ad.sham!(:advertiser_id => advertiser.id)
+    ad3.advertiser_id == ad3.advertiser.id
+  end
+
 end
- 

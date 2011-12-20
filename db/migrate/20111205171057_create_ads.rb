@@ -5,7 +5,7 @@ class CreateAds < ActiveRecord::Migration
       t.string :name
       t.string :phone_number
       t.string :email
-      t.integer :email_id
+      t.integer :advertiser_id
       t.text :ad_content
       t.string :token
       t.date :verification_date

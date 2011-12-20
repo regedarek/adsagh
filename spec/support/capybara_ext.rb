@@ -15,13 +15,7 @@ module CapybaraExt
   end
   
   def flash_alert!(text)
-    within("#flash_alert_item") do
-      assert_seen(text)
-    end
-  end
-  
-  def flash_notice_item!(text)
-    within("#flash_notice_item") do
+    within("#flash_alert") do
       assert_seen(text)
     end
   end
@@ -34,12 +28,18 @@ module CapybaraExt
   
   def selector_for(identifier)
     case identifier
-    when :forum_header
-      "#forum h2"
-    when :forum_description
-      "#forum .description"
-    when :topic_header
-      "#topic h2"
+    when :title
+      "#title"
+    when :name
+      "#name"
+    when :ad_content
+      "#ad_content"
+    when :price
+      "#price"
+    when :display_counter
+      "#display_counter"
+    when :email
+    "#email"
     else
       pending "No selector defined for #{identifier}. Please define one in spec/support/capybara_ext.rb"
     end
