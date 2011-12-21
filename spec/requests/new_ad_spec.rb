@@ -26,6 +26,10 @@ describe "New ad specs" do
       fill_in 'Kategoria', :with => '1'
       fill_in 'ad_email', :with => 't@t6.pl' 
       fill_in 'ad_price', :with => '9,76'
+<<<<<<< HEAD
+=======
+      page!
+>>>>>>> cb8a09aa16842929bdb34673eb35d9830d24cc2b
       click_on 'Dodaj ogłoszenie'
       current_path.should eq(root_path)
       flash_notice!("Ogłoszenie przekazane do potwierdzenia emaila!")
