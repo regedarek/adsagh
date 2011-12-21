@@ -14,7 +14,7 @@ describe 'Categories' do
 	it "creates a new category" do
 		visit categories_path
 		click_on "Nowa kategoria"
-		fill_in 'Name', :with => 'Komputery'
+		fill_in 'Nazwa', :with => 'Komputery'
 		click_on 'Dodaj Category'
 		current_path.should eq(categories_path)
 		flash_notice!("Successfully created category.")
