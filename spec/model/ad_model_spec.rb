@@ -49,16 +49,16 @@ describe Ad do
 
    end
 
-   it "should reject duplicate email addresses" do
-     ad_with_duplicate_email = Ad.sham!(:email => ad.email)
-     ad_with_duplicate_email.should_not be_valid
-   end
+   # it "should reject duplicate email addresses" do
+   #   ad_with_duplicate_email = Ad.sham!(:email => ad.email)
+   #   ad_with_duplicate_email.should_not be_valid
+   # end
 
-   it "should reject email identical up to case" do
-     upcased_email = ad.email.upcase
-     ad_upcased_email = Ad.sham!(:email => upcased_email)
-     ad_upcased_email.should_not be_valid
-   end
+   # it "should reject email identical up to case" do
+   #   upcased_email = ad.email.upcase
+   #   ad_upcased_email = Ad.sham!(:email => upcased_email)
+   #   ad_upcased_email.should_not be_valid
+   # end
 
     it "should be display_counter null" do 
       ad.display_counter.should eq(0)
