@@ -1,5 +1,6 @@
 = simple_form_for @category do |f|
   = f.error_messages
   = f.input :parent_id, :as=> :hidden
-  = f.input :name
-  = f.button :submit
+  = f.input :name, :label=>"Nazwa"
+  .submit
+    = f.button :submit

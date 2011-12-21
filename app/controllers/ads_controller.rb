@@ -2,6 +2,8 @@
 class AdsController < ApplicationController
   # params[:action] == 'show' ? 'show_wrapper' : 'everything_else_wrapper'
 
+  before_filter :categories
+
   def index
     @ads = Ad.where("email_id IS NOT NULL AND verification_date IS NOT NULL")
   end
@@ -53,4 +55,11 @@ class AdsController < ApplicationController
   	@ad = Ad.find(params[:id])
     @ad.update_attribute 'display_counter', @ad.display_counter + 1
   end
+end
+
+private
+
+def categories
+    @roots = Category.where("ancestry IS NULL")
+    @categories = Category.arrange(:order=>:created_at)
 end

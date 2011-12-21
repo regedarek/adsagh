@@ -1,9 +1,9 @@
 -if category.depth != 0
   - category.has_children?  ? children = "yes" : children = "no"
-  .category{:id => "category_id-#{category.id}", :class=>"category_children-#{children}"}
-    = category.name   
+  .category{:id => "category_id-#{category.id}", :class=>"children-#{children} depth-#{category.depth} root-#{category.root_id} parent-#{category.parent_id}"}
+    =category.name  
+
     = link_to 'E', edit_category_path(category) 
     = link_to 'D', category, :confirm => 'Are you sure?', :method => :delete 
     = link_to "A", new_category_path(:parent_id => category)
-
 

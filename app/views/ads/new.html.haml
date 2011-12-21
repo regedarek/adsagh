@@ -2,18 +2,19 @@
 
 .ads
   = simple_form_for @ad do |f|
-    =f.input :title
-    =f.input :price
-    =f.input :category_id
-    =f.input :name, :label=>t(:name)
+    =f.input :title, :label=>"Tytuł", :hint=>"Maksymalnie 50 znaków"
+    =f.input :price, :label=>"Cena"
+    =f.input :category_id, :label=>"Kategoria" , :hint=>"Możesz wpisać nr kategori ręcznie, lub wybrać z menu poniżej."
+    =render :partial => "categories/bar"
+    =f.input :name, :label=>"Ty" , :hint=>"Możesz podać imię, nazwisko, pseudonim lub to wszystko na raz."
     =f.input :email
-    =f.input :phone_number, :hint=>"Numer telefonu komórkowego bez zera np: 600123456"
-    =f.input :ad_content
-    =f.button :submit
-   
-  .category_choice 
+    =f.input :phone_number, :label=>"Telefon", :hint=>"Numer telefonu komórkowego bez zera np: 600123456"
+    =f.input :ad_content, :label=>"Treść"
+    .submit
+      =f.button :submit
+
       
-  - content_for :categories do
+  - content_for :content_menu do
     = link_to t(:back), ads_path
 
 

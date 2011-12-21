@@ -1,8 +1,9 @@
-- title "New Category"
-
-= render @category.parent if @category.parent
+-if @category.parent
+  - title "#{@category.parent.name} >> Dodaj kategorię"
+-else
+  - title "Nowa kategoria główna"
 
 = render 'form'
 
-- content_for :categories do
-  = link_to "Back to List", categories_path
+- content_for :content_menu do
+  = link_to t(:back), categories_path

@@ -1,0 +1,9 @@
+.categories
+  .root_categories
+    =render :partial=> 'categories/root'
+
+  .sub_categories
+    = nested_categories @categories
+
+  .description
+    Wybierz jedną z dostępnych po lewej stronie głównych kategori. Następnie wybierz odpowiednią kategorię w okienku po prawej stronie.

@@ -1,40 +1,79 @@
 .categories
-  font-size: 18px
-  width: 80%
-  margin: 0 auto
-  @include radius
-  border: 1px solid $border_color
+  overflow: hidden
+  font-size: 14px
+  background: $light_color
+  padding: 10px
+  margin-bottom: 10px
 
-  .roots_categories
-    padding: 10px
-    width: 30%
-    vertical-align: top
-    display: inline-block
-    
-  .description
-    margin: 60px
-    font-size: 14px
-    color: gray
-    text-align: center
-
+  .root_categories,
   .sub_categories
-    width: 60%
-    display: inline-block
-    min-height: 200px
-    border-left: 1px solid $border_color
-    padding: 10px 10px 10px 20px
-    margin-left: 20px
+    width: 200px
+    margin:
+      right: 5px
+    background: white
+    padding: 10px
+    float: left
+    border: 1px solid #ccc
+    margin-bottom: -99980px
+    padding-bottom: 99999px
+    @include radius
+
+  .description
+    text-align: right
+    color: gray
+    font-size: 13px
+    margin: 50px 40px
+    width: 280px
+    float: left
+    margin-bottom: -99980px
+    padding-bottom: 99999px
+
+  .root_categories
+    margin-left: 120px
+    .category
+      &:before
+        content: "+"
+    
+  .sub_categories
+
 
   .category
-    margin: 5px
+    cursor: pointer
+    padding: 10px
+    border-bottom: 1px solid #ccc
     a
       font-size: 70%
 
-  .nested_categories
-    margin:
-      left: 20px
-      bottom: 0
-      top: 0
+  .children-no
+    &:before
+      content: ">"
+
+  .children-yes
+    &:before
+      content: "+"
+
+.categories_tree
+  padding: 10px 10px 0 10px
+  background: $light_color
+  font-size: 16px
+  .tree
+    margin-left: 120px
+    width: 400px
+    border:
+      left: 1px solid #ccc
+      right: 1px solid #ccc
+      top: 1px solid #ccc
+    padding: 20px
+    background: white
+    @include radius
+  .description
+    float: right
+    text-align: right
+    color: gray
+    font-size: 13px
+    margin: 50px 40px
+    width: 280px
+
 
 
 

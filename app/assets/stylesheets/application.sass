@@ -46,6 +46,7 @@ h1
   background: white
   @include radius 
   @include shadow
+  margin-bottom: 20px
   
 
 #sidebar
@@ -53,6 +54,19 @@ h1
   margin:
     right: 5px
   width: 10%
+  a
+    width: 85px
+    :display inline-block
+    :text-align center
+    :padding 10px 10px
+    :margin 5px 1px
+    :background-color $menu_color
+    @include radius
+    :color white
+    :text-decoration none
+    &:hover
+      :cursor pointer
+      :background-color darken($menu_color, 10%)
     
 
 

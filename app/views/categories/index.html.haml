@@ -1,14 +1,19 @@
 - title "Kategorie"
 
-.categories
-  .roots_categories
-    =render :partial=> 'root'
+%h2 Widok scalony
+=render :partial => "bar"
 
-  .sub_categories
-    .description
-      =t '.description'
-    = nested_categories @categories
+
+%h2 Drzewo Kategori
+.categories_tree
+  .description
+    Tylko tutaj zamienie i będzie możliwość edytowania z drzewa a nie z widoku scalonego.
+  .tree
+    = nested_categories_tree @categories
 
 - content_for :content_menu do
   = link_to t(".new_category"), new_category_path
+  = link_to "Strona główna", root_path
+
+
 
