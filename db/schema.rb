@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20111216183927) do
     t.string   "name"
     t.string   "phone_number"
     t.string   "email"
-    t.integer  "email_id"
+    t.integer  "advertiser_id"
     t.text     "ad_content"
     t.string   "token"
     t.date     "verification_date"
@@ -55,20 +55,5 @@ ActiveRecord::Schema.define(:version => 20111216183927) do
   end
 
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
-
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
 end

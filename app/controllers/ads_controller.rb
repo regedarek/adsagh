@@ -5,7 +5,7 @@ class AdsController < ApplicationController
   before_filter :categories
 
   def index
-    @ads = Ad.where("email_id IS NOT NULL AND verification_date IS NOT NULL")
+    @ads = Ad.where("advertiser_id IS NOT NULL AND verification_date IS NOT NULL")
   end
 
   def new    
@@ -14,13 +14,20 @@ class AdsController < ApplicationController
 
   def create  
     @ad = Ad.new(params[:ad]) 
-    if @ad.save
-      AdMailer.ad_token(@ad).deliver
-      redirect_to root_path 
-      flash[:notice_item] = "Ogłoszenie przekazane do weryfikacji." 
+    @adv = Advertiser.find_by_email(params[:ad][:email])
+    if @ad.save 
+      if @adv
+        @ad.update_attributes(:advertiser_id => @adv.id)
+        redirect_to root_path
+        flash[:notice] = "Ogłoszenie przekazane do weryfikacji!" 
+      else
+        AdMailer.ad_token(@ad).deliver
+        redirect_to root_path
+        flash[:notice] = "Ogłoszenie przekazane do potwierdzenia emaila!" 
+      end
     else
-      render :action => "new"
-  	end
+      render :new
+    end
   end
   
   def confirm
@@ -31,21 +38,23 @@ class AdsController < ApplicationController
       :phone_number => @ad.phone_number
     )
     if @ad.token == params[:token]
-      @ad.update_attribute :email_id, @advertiser.id
-      flash[:notice_item] = "potwierdzono" 
+      @ad.update_attribute :advertiser_id, @advertiser.id
+      flash[:notice] = "potwierdzono" 
     else
-      flash[:notice_item] = "błędny kod potwierdzający"
+      flash[:notice] = "błędny kod potwierdzający"
     end
     redirect_to root_path
   end
 
   def edit
     @ad = Ad.find(params[:id])
+    if @ad.token != params[:token]
+      redirect_to root_path, :alert => "Musisz posiadać token!"
+    end
   end
 
   def update
     @ad = Ad.find(params[:id])
-    # @ad.verification_date = nil
     @ad.update_attributes(params[:ad])
     @ad.update_attributes(:verification_date => nil)
     redirect_to @ad, :notice => "Zaktualizowano!"  

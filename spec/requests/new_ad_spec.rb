@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 describe "New ad specs" do
- before(:all) do
-    @ads = Array.new(3) { Ad.sham!(:email_id => 1, :verification_date => Time.now) } 
+  before(:all) do
+    @ads = Array.new(3) { Ad.sham!(:advertiser_id => 1, :verification_date => Time.now) } 
   end
 
   describe "On the root_path" do
@@ -16,7 +16,7 @@ describe "New ad specs" do
       end
     end
 
-    it "creates a new ad" do
+    it "create ad by advertiser who is not in database" do
       visit root_path
       click_on "Dodaj ogłoszenie"
       fill_in 'Title', :with => 'Nerka do sprzedania'
@@ -26,7 +26,20 @@ describe "New ad specs" do
       fill_in 'Price', :with => '9,76'
       click_on 'Dodaj ogłoszenie'
       current_path.should eq(root_path)
-      flash_notice_item!("Ogłoszenie przekazane do weryfikacji")
+      flash_notice!("Ogłoszenie przekazane do potwierdzenia emaila!")
+    end
+
+    it "create ad by adveritiser who is in database" do
+      adv = Advertiser.sham!
+      visit root_path
+      click_on "Dodaj ogłoszenie"
+      fill_in 'Title', :with => 'Nerka do sprzedania'
+      fill_in 'Ad content', :with => 'sprzedam nieswoja nerke'
+      fill_in 'Name', :with => adv.name
+      fill_in 'Email', :with => adv.email 
+      fill_in 'Price', :with => '9,76'
+      click_on 'Dodaj ogłoszenie'
+      flash_notice!("Ogłoszenie przekazane do weryfikacji!")
     end
   end
 end
