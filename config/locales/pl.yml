@@ -21,8 +21,10 @@ pl:
     index:
       description: "Wybierz jedną z dostępnych po lewej stronie głównych kategori. Następnie wybierz odpowiednią kategorię w okienku po prawej stronie."
       new_category: "Nowa kategoria"
-
-      
+  ad:
+    create:
+      awaiting_verification: "Ogłoszenie przekazane do weryfikacji!"
+      awaiting_email_confirmation: "Ogłoszenie przekazane do potwierdzenia emaila!"
   errors:
     format: "%{attribute} %{message}"      
     messages: &errors_messages
