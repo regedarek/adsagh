@@ -31,5 +31,21 @@ class Ad < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while Ad.exists?(column => self[column])
   end
-  
+
+  def self.create_and_verify(params)
+    advertiser = Advertiser.find_by_email(params[:email])
+    ad = new(params, advertiser: advertiser)
+
+    return false unless ad.save
+
+    if advertiser
+      :awaiting_verification
+    else
+      AdMailer.ad_token(ad).deliver
+      :awaiting_email_confirmation
+    end
+  end 
 end
+
+
+

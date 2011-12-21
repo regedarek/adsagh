@@ -12,24 +12,16 @@ class AdsController < ApplicationController
     @ad = Ad.new
   end
 
-  def create  
-    @ad = Ad.new(params[:ad]) 
-    @adv = Advertiser.find_by_email(params[:ad][:email])
-    if @ad.save 
-      if @adv
-        @ad.update_attributes(:advertiser_id => @adv.id)
-        redirect_to root_path
-        flash[:notice] = "Ogłoszenie przekazane do weryfikacji!" 
-      else
-        AdMailer.ad_token(@ad).deliver
-        redirect_to root_path
-        flash[:notice] = "Ogłoszenie przekazane do potwierdzenia emaila!" 
-      end
+  def create
+    if msg = Ad.create_and_verify(params[:ad])
+      flash.notice = t("ad.create.#{msg}")
+      redirect_to root_path
     else
+      flash.now.alert = 'invalid'
       render :new
     end
   end
-  
+
   def confirm
     @ad = Ad.find(params[:id])
     @advertiser = Advertiser.find_or_create_by_email(
@@ -72,3 +64,4 @@ def categories
     @roots = Category.where("ancestry IS NULL").order(:name)
     @categories = Category.arrange(:order=>:name)
 end
+
