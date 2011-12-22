@@ -1,7 +1,5 @@
 # encoding: UTF-8
 class AdsController < ApplicationController
-  # params[:action] == 'show' ? 'show_wrapper' : 'everything_else_wrapper'
-
   before_filter :categories
 
   def index
