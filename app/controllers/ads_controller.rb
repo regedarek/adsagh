@@ -21,7 +21,7 @@ class AdsController < ApplicationController
       render :new
     end
   end
-
+ 
   def confirm
     @ad = Ad.find(params[:id])
     @advertiser = Advertiser.find_or_create_by_email(
