@@ -49,13 +49,14 @@ describe "New ad specs" do
 
     it "show errors" do
       visit new_ad_path 
-      fill_in 'ad_title', :with => '' 
-      fill_in 'ad_ad_content', :with => ''
-      fill_in 'ad_name', :with => ''
+      fill_in 'ad_title', :with => 'gf' 
+      fill_in 'ad_ad_content', :with => 'gfd'
+      fill_in 'ad_name', :with => 'hgf'
       fill_in 'Kategoria', :with => ''
       fill_in 'ad_email', :with => ''
       fill_in 'ad_price', :with => '' 
       click_on 'Dodaj ogłoszenie'
+      all('span.error').count.should == 3
     end
   end
 end

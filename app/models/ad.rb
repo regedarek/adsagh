@@ -6,6 +6,8 @@ class Ad < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   
+  
+  
   validates :title,        :presence   => true
   validates :name,         :length     => { :maximum => 50 },
                            :presence => true
