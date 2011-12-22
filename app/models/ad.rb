@@ -32,20 +32,18 @@ class Ad < ActiveRecord::Base
     end while Ad.exists?(column => self[column])
   end
 
-  def self.create_and_verify(params)
-    advertiser = Advertiser.find_by_email(params[:email])
-    ad = new(params, advertiser: advertiser)
+  def create_by(email)
+    self.advertiser = Advertiser.find_by_email(email)
 
-    return false unless ad.save
-
-    if advertiser
+    return false unless save
+    if self.advertiser
       :awaiting_verification
     else
-      AdMailer.ad_token(ad).deliver
+      AdMailer.ad_token(self).deliver
       :awaiting_email_confirmation
     end
   end 
-end
 
+end
 
 

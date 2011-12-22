@@ -13,14 +13,39 @@ class AdsController < ApplicationController
   end
 
   def create
-    if msg = Ad.create_and_verify(params[:ad])
+    @ad = Ad.new(params[:ad])
+    if msg = @ad.create_by(params[:ad][:email])
       flash.notice = t("ad.create.#{msg}")
       redirect_to root_path
     else
-      flash.now.alert = 'invalid'
       render :new
     end
   end
+  # def create
+  #   if msg = Ad.create_and_verify(params[:ad])
+  #     flash.notice = t("ad.create.#{msg}")
+  #     redirect_to root_path
+  #   else
+  #     render :new
+  #   end
+  # end
+  # def create  
+  #   @ad = Ad.new(params[:ad]) 
+  #   @adv = Advertiser.find_by_email(params[:ad][:email])
+  #   if @ad.save 
+  #     if @adv
+  #       @ad.update_attributes(:advertiser_id => @adv.id)
+  #       redirect_to root_path
+  #       flash[:notice] = "Ogłoszenie przekazane do weryfikacji!" 
+  #     else
+  #       AdMailer.ad_token(@ad).deliver
+  #       redirect_to root_path
+  #       flash[:notice] = "Ogłoszenie przekazane do potwierdzenia emaila!" 
+  #     end
+  #    else
+  #      render :new
+  #    end
+  #  end
 
   def confirm
     @ad = Ad.find(params[:id])

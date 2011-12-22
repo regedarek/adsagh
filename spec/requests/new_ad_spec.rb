@@ -2,13 +2,10 @@
 require 'spec_helper'
 
 describe "New ad specs" do
-  before(:all) do
-    @ads = Array.new(3) { Ad.sham!(:advertiser_id => 1, :verification_date => Time.now) } 
-    Category.sham!
-  end
-
   describe "On the root_path" do
     it "listing all ads" do
+      @ads = Array.new(3) { Ad.sham!(:advertiser_id => 1, :verification_date => Time.now) } 
+      Category.sham!
       visit root_path
       page.should have_selector(".title", :text => "Lista ogłoszeń")
       page.should have_selector(".ad", :count => 3)
@@ -17,9 +14,14 @@ describe "New ad specs" do
       end
     end
 
-    it "create ad by advertiser who is not in database" do
+    it 'goes to new ad path' do
       visit root_path
-      click_on "Dodaj ogłoszenie"
+      click_link "Dodaj ogłoszenie"
+      current_path.should eq(new_ad_path) 
+    end
+
+    it "create ad by advertiser who is not in database" do
+      visit new_ad_path 
       fill_in 'ad_title', :with => 'Nerka do sprzedania'
       fill_in 'ad_ad_content', :with => 'sprzedam nieswoja nerke'
       fill_in 'ad_name', :with => 'Czesio'
@@ -33,8 +35,7 @@ describe "New ad specs" do
 
     it "create ad by adveritiser who is in database" do
       adv = Advertiser.sham!
-      visit root_path
-      click_on "Dodaj ogłoszenie"
+      visit new_ad_path 
       fill_in 'ad_title', :with => 'Nerka do sprzedania'
       fill_in 'ad_ad_content', :with => 'sprzedam nieswoja nerke'
       fill_in 'ad_name', :with => adv.name
@@ -42,7 +43,19 @@ describe "New ad specs" do
       fill_in 'ad_email', :with => adv.email 
       fill_in 'ad_price', :with => '9,76'
       click_on 'Dodaj ogłoszenie'
+      # page!
       flash_notice!("Ogłoszenie przekazane do weryfikacji!")
+    end
+
+    it "show errors" do
+      visit new_ad_path 
+      fill_in 'ad_title', :with => '' 
+      fill_in 'ad_ad_content', :with => ''
+      fill_in 'ad_name', :with => ''
+      fill_in 'Kategoria', :with => ''
+      fill_in 'ad_email', :with => ''
+      fill_in 'ad_price', :with => '' 
+      click_on 'Dodaj ogłoszenie'
     end
   end
 end
