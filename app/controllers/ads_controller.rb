@@ -13,11 +13,11 @@ class AdsController < ApplicationController
   end
 
   def create
-    if msg = Ad.create_and_verify(params[:ad])
+    @ad = Ad.new(params[:ad])
+    if msg = @ad.create_by(params[:ad][:email])
       flash.notice = t("ad.create.#{msg}")
       redirect_to root_path
     else
-      flash.now.alert = 'invalid'
       render :new
     end
   end
