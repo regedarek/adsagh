@@ -23,6 +23,7 @@ group :assets do
 end
 
 # Gemy testów
+gem 'letter_opener', :group => :development
 gem "rspec-rails", :group => [:test, :development]
 group :test do
   gem 'database_cleaner'
@@ -35,4 +36,5 @@ group :test do
   gem 'guard-spork'
   gem 'sham'
 end
+
 

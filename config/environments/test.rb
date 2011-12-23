@@ -8,7 +8,7 @@ Adsagh::Application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs.  Don't rely on the data there!
 
-  config.action_mailer.delivery_method = :test
+config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { :host => "example.com" }
 
   config.cache_classes = true
