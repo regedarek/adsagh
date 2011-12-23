@@ -36,6 +36,7 @@ class Ad < ActiveRecord::Base
       :awaiting_email_confirmation
     end
   end 
+  
 
 end
 

@@ -13,6 +13,9 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     if msg = @ad.create_by(params[:ad][:email])
+      cookies.permanent[:email] = [params[:ad][:email]]
+      cookies.permanent[:name] = [params[:ad][:name]]
+      cookies.permanent[:phone_number] = [params[:ad][:phone_number]]
       flash.notice = t("ad.create.#{msg}")
       redirect_to root_path
     else

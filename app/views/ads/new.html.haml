@@ -1,14 +1,13 @@
 - title "Dodaj ogłoszenie"
-
 .ads
   = simple_form_for @ad do |f|
     =f.input :title, :label=>"Tytuł", :hint=>"Maksymalnie 50 znaków"
     =f.input :price, :label=>"Cena"
     =f.input :category_id, :label=>"Kategoria" , :hint=>"Możesz wpisać nr kategori ręcznie, lub wybrać z menu poniżej."
     =render :partial => "categories/bar"
-    =f.input :name, :label=>"Ty" , :hint=>"Możesz podać imię, nazwisko, pseudonim lub to wszystko na raz."
-    =f.input :email
-    =f.input :phone_number, :label=>"Telefon", :hint=>"Numer telefonu komórkowego bez zera np: 600123456"
+    = f.input :name,:input_html => { :value => cookies[:name] }, :label=>"Ty" , :hint=>"Możesz podać imię, nazwisko, pseudonim lub to wszystko na raz."
+    = f.input :email, :input_html => { :value => cookies[:email] }
+    = f.input :phone_number, :input_html => { :value => cookies[:phone_number] }, :label=>"Telefon", :hint=>"Numer telefonu komórkowego bez zera np: 600123456"
     =f.input :ad_content, :label=>"Treść"
     .submit
       =f.button :submit
@@ -17,24 +16,3 @@
   - content_for :content_menu do
     = link_to t(:back), ads_path
 
-
-////////////////////////////////////////////////////////////
-/= form_for @ad do |f| 
-/  %p
-/    = f.label :title
-/    = f.text_field :title
-/  %p
-/    = f.label :price
-/    = f.text_field :price
-/  %p
-/    = f.label :name
-/    = f.text_field :name
-/  %p
-/    = f.label :email
-/    = f.text_field :email
-/  %p
-/    = f.label :ad_content
-/    = f.text_field :ad_content
-/  %p.button
-/    = f.submit
-    
