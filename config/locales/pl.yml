@@ -25,13 +25,16 @@ pl:
     create:
       awaiting_verification: "Ogłoszenie przekazane do weryfikacji!"
       awaiting_email_confirmation: "Ogłoszenie przekazane do potwierdzenia emaila!"
+    confirm:
+      succesfully_confirmed_email: "Potwierdzono email"
+      unsuccesfully_confirmed_email: "Błędny kod potwierdzający"
   errors:
     format: "%{attribute} %{message}"      
     messages: &errors_messages
       inclusion: "nie znajduje się na liście dopuszczalnych wartości"
       exclusion: "jest zarezerwowane"
       invalid: "jest nieprawidłowe"
-      confirmation: "nie zgadza się z potwierdzeniem"
+      confir mation: "nie zgadza się z potwierdzeniem"
       accepted: "musi zostać zaakceptowane"
       empty: "nie może być puste"
       blank: "nie może być puste"

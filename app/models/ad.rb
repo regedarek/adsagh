@@ -27,7 +27,6 @@ class Ad < ActiveRecord::Base
 
   def create_by(email)
     self.advertiser = Advertiser.find_by_email(email)
-
     return false unless save
     if self.advertiser
       :awaiting_verification
@@ -35,8 +34,18 @@ class Ad < ActiveRecord::Base
       AdMailer.ad_token(self).deliver
       :awaiting_email_confirmation
     end
-  end 
-  
+  end
+
+  def confirm_by(id, token)
+    ad = Ad.find(id)
+    self.advertiser = Advertiser.find_or_create_by_email(:email => ad.email, :name => ad.name, :phone_number => ad.phone_number)
+    if ad.token == token
+      ad.update_attribute :advertiser_id, self.advertiser.id
+      :succesfully_confirmed_email
+    else
+      :unsuccesfully_confirmed_email
+    end
+  end
 
 end
 
