@@ -32,11 +32,20 @@ class AdsController < ApplicationController
     )
     if @ad.token == params[:token]
       @ad.update_attribute :advertiser_id, @advertiser.id
-      flash[:notice] = "potwierdzono" 
+      flash[:notice] = "Potwierdzono email: #{@advertiser.email}" 
     else
-      flash[:notice] = "błędny kod potwierdzający"
+      flash[:alert] = "Błędny kod potwierdzający"
     end
     redirect_to root_path
+  end
+
+  def auth
+    auth = request.env["omniauth.auth"]
+    flash[:notice] = "Uwierzytelniono pomyślnie."
+    cookies.permanent[:email] = auth["info"]["email"]
+    cookies.permanent[:name] = auth["info"]["name"]
+    cookies.permanent[:phone_number] = auth["info"]["phone"]
+    redirect_to new_ad_path 
   end
 
   def edit

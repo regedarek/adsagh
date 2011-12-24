@@ -10,7 +10,11 @@ gem 'jquery-rails'
 # Gemy potrzebne do działania aplikacji
 gem 'therubyracer'
 gem 'ancestry'
+
+# Gemy uwierzytelniania
 gem 'sorcery'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 # Gemy wyglądu
 gem "haml-rails"
