@@ -30,7 +30,7 @@ ad3 = Ad.create(
 								:email => 'czesio@agh.pl',
 								:ad_content =>'Lorem ipsum',
 								:price => '4',
-								:advertiser_id => 1
-								:verification_date = Time.now
+								:advertiser_id => 1,
+								:verification_date => Time.now
       )
-advertiser = (:name => ad1.name, :email => ad1.email)
+# advertiser = (:name => ad1.name, :email => ad1.email)

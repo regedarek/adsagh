@@ -1,6 +1,3 @@
 -@roots.each do |root|
   .category{:class=>"root-#{root.root_id} depth-#{root.depth}"}
     = root.name
-    = link_to 'E', edit_category_path(root) 
-    = link_to 'D', root, :confirm => 'Are you sure?', :method => :delete 
-    = link_to "A", new_category_path(:parent_id => root)
