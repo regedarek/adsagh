@@ -17,12 +17,3 @@ module CategoriesHelper
 		end.join.html_safe
 	end
 end
-
-
-   # = link_to 'E', edit_category_path(root) 
-   # = link_to 'D', root, :confirm => 'Are you sure?', :method => :delete 
-   # = link_to "A", new_category_path(:parent_id => root)#
-
-    #= link_to 'E', edit_category_path(category) 
-    #= link_to 'D', category, :confirm => 'Are you sure?', :method => :delete 
-    #= link_to "A", new_category_path(:parent_id => category)
