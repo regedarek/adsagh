@@ -16,6 +16,7 @@ describe 'Verification' do
     it "show me only confirm ads" do
       log_in @admin 
       current_path.should eql(verifications_path)
+      # page!
       page.should_not have_selector(:name, :text => @ad1.name)
       assert_seen(@ad2.name, :within => :name)
       assert_seen(@ad2.ad_content, :within => :ad_content)

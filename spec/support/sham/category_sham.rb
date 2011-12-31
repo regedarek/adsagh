@@ -5,4 +5,10 @@ Sham.config(Category) do |c|
     	:name => "Komputer"
     }
   end
+  c.attributes do
+  {
+  	:name => "Laptopy",
+  	:ancestry => 1
+  }
+  end
 end

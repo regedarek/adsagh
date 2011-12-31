@@ -1,7 +1,5 @@
 # encoding: UTF-8
 class AdsController < ApplicationController
-  # params[:action] == 'show' ? 'show_wrapper' : 'everything_else_wrapper'
-
   before_filter :categories
 
   def index
@@ -13,31 +11,18 @@ class AdsController < ApplicationController
   end
 
   def create
-    if msg = Ad.create_and_verify(params[:ad])
+    @ad = Ad.new(params[:ad])
+    if msg = @ad.create_by(params[:ad][:email])
+      cookies.permanent[:email] = [params[:ad][:email]]
+      cookies.permanent[:name] = [params[:ad][:name]]
+      cookies.permanent[:phone_number] = [params[:ad][:phone_number]]
       flash.notice = t("ad.create.#{msg}")
       redirect_to root_path
     else
-      flash.now.alert = 'invalid'
       render :new
     end
   end
-
-  def confirm
-    @ad = Ad.find(params[:id])
-    @advertiser = Advertiser.find_or_create_by_email(
-      :email => @ad.email,
-      :name => @ad.name,
-      :phone_number => @ad.phone_number
-    )
-    if @ad.token == params[:token]
-      @ad.update_attribute :advertiser_id, @advertiser.id
-      flash[:notice] = "potwierdzono" 
-    else
-      flash[:notice] = "błędny kod potwierdzający"
-    end
-    redirect_to root_path
-  end
-
+ 
   def edit
     @ad = Ad.find(params[:id])
     if @ad.token != params[:token]
@@ -55,6 +40,24 @@ class AdsController < ApplicationController
   def show
   	@ad = Ad.find(params[:id])
     @ad.update_attribute 'display_counter', @ad.display_counter + 1
+  end
+
+#custom actions
+  def auth
+    auth = request.env["omniauth.auth"]
+    flash[:notice] = "Uwierzytelniono pomyślnie."
+    cookies.permanent[:email] = auth["info"]["email"]
+    cookies.permanent[:name] = auth["info"]["name"]
+    cookies.permanent[:phone_number] = auth["info"]["phone"]
+    redirect_to new_ad_path 
+  end
+
+  def confirm
+    @ad = Ad.find(params[:id])
+    if msg = @ad.confirm_by(params[:id], params[:token])
+      flash.notice = t("ad.confirm.#{msg}")
+      redirect_to root_path
+    end
   end
 end
 
