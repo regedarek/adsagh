@@ -5,6 +5,9 @@ class CategoriesController < ApplicationController
   def index
     @roots = Category.where("ancestry IS NULL").order(:name)
     @categories = Category.arrange(:order=>:name)
+    @categoria= Category.find_by_id(params[:category]).subtree.map(&:id) if params[:category]
+    @ads = Ad.find(:all, :conditions => ["category_id IN (?)",@categoria])
+
   end
   
 

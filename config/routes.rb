@@ -20,6 +20,8 @@ Adsagh::Application.routes.draw do
   end
   match ':controller/:action/:id/:token'
   match "/auth/:provider/callback" => "ads#auth"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

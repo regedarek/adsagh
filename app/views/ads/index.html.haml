@@ -4,8 +4,10 @@
   brak ogłoszeń w bazie
 - else
   - @ads.each do |ad|
-    #title.ad= link_to(ad.title, ad_path(ad))
-    %br
+    #title.ad
+      = ad.category_id
+      = link_to ad.title, ad_path(ad)
+
 
 - content_for :content_menu do
   = link_to "Dodaj ogłoszenie", new_ad_path
