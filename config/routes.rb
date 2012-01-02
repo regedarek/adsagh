@@ -2,7 +2,7 @@ Adsagh::Application.routes.draw do
   get "zaloguj" => "sessions#new", :as => "zaloguj"
   get "wyloguj" => "sessions#destroy", :as => "wyloguj"
   resources :sessions
-  
+
   resources :categories
   resources :verifications do
     member do
@@ -13,14 +13,16 @@ Adsagh::Application.routes.draw do
       put 'discard_info'
     end
   end
+
   resources :ads do    
     member do
       get 'confirm'
     end
   end
+
   match ':controller/:action/:id/:token'
   match "/auth/:provider/callback" => "ads#auth"
-
+  match ':id' => "ads#show", :as=>:short_ad
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

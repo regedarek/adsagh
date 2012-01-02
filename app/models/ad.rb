@@ -47,6 +47,11 @@ class Ad < ActiveRecord::Base
     end
   end
 
+  # SEO FRIENDLY :)
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
 end
 
 
