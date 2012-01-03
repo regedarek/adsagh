@@ -16,4 +16,21 @@
   = link_to "Strona główna", root_path
 
 
-
+//ten kod jest brzydki ale to tylko chcialem zeby działało
+%br
+=link_to "test linka do categori AGD", categories_path(:category=>"2")
+%br
+%br
+%strong Tu wyswietla wszystkie dzieci tej categori:
+%br
+%var=@categoria
+%br
+%br
+%strong A tutaj ogłoszenia z tej kategori i jej dzieci:
+%br
+-@ads.each do |ad|
+  %var  
+    = link_to ad.title, ad_path(ad)
+    Categoria nr:
+    = ad.category_id
+  %br

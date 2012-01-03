@@ -64,7 +64,7 @@ end
 private
 
 def categories
-    @roots = Category.where("ancestry IS NULL")
-    @categories = Category.arrange(:order=>:created_at)
+    @roots = Category.where("ancestry IS NULL").order(:name)
+    @categories = Category.arrange(:order=>:name)
 end
 

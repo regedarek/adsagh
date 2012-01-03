@@ -3,8 +3,11 @@ class CategoriesController < ApplicationController
   layout :resolve_layout
   
   def index
-    @roots = Category.where("ancestry IS NULL")
-    @categories = Category.arrange(:order=>:created_at)
+    @roots = Category.where("ancestry IS NULL").order(:name)
+    @categories = Category.arrange(:order=>:name)
+    @categoria= Category.find_by_id(params[:category]).subtree.map(&:id) if params[:category]
+    @ads = Ad.find(:all, :conditions => ["category_id IN (?)",@categoria])
+
   end
   
 
