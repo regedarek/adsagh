@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
 
-describe Ad, :focus do
+describe Ad do
   let(:ad) { Ad.sham!(:build) }
 
   specify { ad.should be_valid }

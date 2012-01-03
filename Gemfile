@@ -18,7 +18,7 @@ gem 'omniauth-google-oauth2'
 
 # Gemy wyglądu
 gem "haml-rails"
-gem 'nifty-generators'
+gem 'nifty-generators', :group => :development
 gem 'simple_form'
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
