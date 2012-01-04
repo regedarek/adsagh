@@ -28,10 +28,9 @@ pl:
     index:
       description: "Wybierz jedną z dostępnych po lewej stronie głównych kategori. Następnie wybierz odpowiednią kategorię w okienku po prawej stronie."
       new_category: "Nowa kategoria"
-    create:
-      succesfully_created_category: "Utworzono kategorię"
-      succesfully_updated_category: "Zaktualizowano kategorię"
-      succesfully_destroyed_category: "Usunięto kategorię"
+    succesfully_created_category: "Utworzono kategorię"
+    succesfully_updated_category: "Zaktualizowano kategorię"
+    succesfully_destroyed_category: "Usunięto kategorię"
 
   ad:
     create:

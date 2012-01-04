@@ -25,7 +25,8 @@ class AdsController < ApplicationController
  
   def edit
     @ad = Ad.find(params[:id])
-    if @ad.token != params[:token]
+    if @ad.token = params[:token] || logged_in?
+    else
       redirect_to root_path, alert: t('ad.edit.wrong_token') 
     end
   end
@@ -34,7 +35,11 @@ class AdsController < ApplicationController
     @ad = Ad.find(params[:id])
     @ad.update_attributes(params[:ad])
     @ad.update_attributes(:verification_date => nil)
-    redirect_to @ad, notice: t('ad.update') 
+    if logged_in? 
+      redirect_to verifications_path, notice: t('ad.update')
+    else  
+      redirect_to @ad, notice: t('ad.update') 
+    end
   end
 
   def show

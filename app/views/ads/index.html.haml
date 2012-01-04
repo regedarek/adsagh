@@ -8,10 +8,8 @@
       = ad.category_id
       = link_to ad.title, short_ad_path(ad)
 
-
-
 - content_for :content_menu do
   = link_to "Dodaj ogłoszenie", new_ad_path
   = link_to "Kategorie", categories_path
-  = link_to "Google", "/auth/google_oauth2"
+  = link_to "Google", "http://localhost:3000/auth/google_oauth2"
   = link_to "Facebook", "/auth/facebook"

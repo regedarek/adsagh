@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
     @categories = Category.arrange(:order=>:name)
     @categoria= Category.find_by_id(params[:category]).subtree.map(&:id) if params[:category]
     @ads = Ad.find(:all, :conditions => ["category_id IN (?)",@categoria])
-
   end
   
 
@@ -18,7 +17,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
     if @category.save
-      redirect_to categories_path, notice: t('.succesfully_created_category') 
+      redirect_to categories_path, notice: t('categories.succesfully_created_category') 
     else
       render :action => 'new'
     end
@@ -31,7 +30,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update_attributes(params[:category])
-      redirect_to categories_path, notice: t('.succesfully_updated_category') 
+      redirect_to categories_path, notice: t('categories.succesfully_updated_category') 
     else
       render :action => 'edit'
     end
@@ -40,7 +39,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to categories_url, notice: t('.succesfully_destroyed_category') 
+    redirect_to categories_url, notice: t('categories.succesfully_destroyed_category') 
   end
 end
 
