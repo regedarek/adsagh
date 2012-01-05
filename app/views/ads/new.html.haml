@@ -1,7 +1,7 @@
 - title "Dodaj ogłoszenie"
 .ads
   = simple_form_for @ad do |f|
-    =f.input :title, :label=>"Tytuł", :hint=>"Maksymalnie 50 znaków"
+    =f.input :title, :hint=>"Maksymalnie 50 znaków"
     =f.input :price, :label=>"Cena"
     =f.input :category_id, :label=>"Kategoria" , :hint=>"Możesz wpisać nr kategori ręcznie, lub wybrać z menu poniżej."
     =render :partial => "categories/bar"

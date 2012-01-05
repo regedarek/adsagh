@@ -38,8 +38,13 @@ class AdsController < ApplicationController
   end
 
   def show
-  	@ad = Ad.find(params[:id])
-    @ad.update_attribute 'display_counter', @ad.display_counter + 1
+    begin
+      @ad = Ad.find(params[:id])
+      @ad.update_attribute 'display_counter', @ad.display_counter + 1
+    rescue ActiveRecord::RecordNotFound
+      flash.alert=t("ad.not_found")
+      redirect_to ads_path
+    end
   end
 
 #custom actions
