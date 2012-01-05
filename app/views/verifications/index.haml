@@ -1,13 +1,18 @@
-%br
-Ogłoszenia do zweryfikowania:
+%h3 
+  Ogłoszenia do zweryfikowania 
+  [ 
+  = @ads.size
+  ]
 - @ads.each do |ad|
   #name
     %b= ad.name
   #email  
     %i= ad.email
   #ad_content
-    %br= ad.ad_content
+    = ad.ad_content
     = link_to "Weryfikuj", verify_verification_path(ad), :method => :put 
     |
     = link_to "Odrzuć", discard_info_verification_path(ad), :method => :put
+    |
+    = link_to "Edit", edit_ad_path(ad)
   %br

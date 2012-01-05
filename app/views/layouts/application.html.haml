@@ -13,14 +13,16 @@
   %body
     .black_mamba
     #container
+      - if logged_in? 
+        Zalogowany jako
+        = current_user.username
+        = link_to "Strona Główna", root_path
+        = link_to "Panel Admina", verifications_path
+        = link_to "Wyloguj", wyloguj_path
       #sidebar
         %br
         =yield :content_menu
       #content
-        - if current_user
-          Zalogowany jako
-          = current_user.username
-          = link_to "Wyloguj", wyloguj_path
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}"
         

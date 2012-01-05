@@ -25,8 +25,9 @@ class AdsController < ApplicationController
  
   def edit
     @ad = Ad.find(params[:id])
-    if @ad.token != params[:token]
-      redirect_to root_path, :alert => "Musisz posiadać token!"
+    if @ad.token = params[:token] || logged_in?
+    else
+      redirect_to root_path, alert: t('ad.edit.wrong_token') 
     end
   end
 
@@ -34,7 +35,11 @@ class AdsController < ApplicationController
     @ad = Ad.find(params[:id])
     @ad.update_attributes(params[:ad])
     @ad.update_attributes(:verification_date => nil)
-    redirect_to @ad, :notice => "Zaktualizowano!"  
+    if logged_in? 
+      redirect_to verifications_path, notice: t('ad.update')
+    else  
+      redirect_to @ad, notice: t('ad.update') 
+    end
   end
 
   def show
@@ -50,18 +55,16 @@ class AdsController < ApplicationController
 #custom actions
   def auth
     auth = request.env["omniauth.auth"]
-    flash[:notice] = "Uwierzytelniono pomyślnie."
     cookies.permanent[:email] = auth["info"]["email"]
     cookies.permanent[:name] = auth["info"]["name"]
     cookies.permanent[:phone_number] = auth["info"]["phone"]
-    redirect_to new_ad_path 
+    redirect_to new_ad_path, notice: t('ad.auth.succesfully_authenticated')
   end
 
   def confirm
     @ad = Ad.find(params[:id])
     if msg = @ad.confirm_by(params[:id], params[:token])
-      flash.notice = t("ad.confirm.#{msg}")
-      redirect_to root_path
+      redirect_to root_path, notice: t("ad.confirm.#{msg}")
     end
   end
 end
@@ -72,4 +75,3 @@ def categories
     @roots = Category.where("ancestry IS NULL").order(:name)
     @categories = Category.arrange(:order=>:name)
 end
-

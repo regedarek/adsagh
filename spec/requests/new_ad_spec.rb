@@ -17,7 +17,7 @@ describe "New ad specs" do
     it 'goes to new ad path' do
       visit root_path
       click_link "Dodaj ogłoszenie"
-      current_path.should eq(new_ad_path) 
+      current_path.should eq("/ads/new.html") 
     end
 
     it "create ad by advertiser who is not in database" do

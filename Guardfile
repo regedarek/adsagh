@@ -25,3 +25,12 @@ guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_afte
   watch(%r{^app/(.+)\.rb}) { |m| "spec/#{m[1]}_spec.rb" }
 end
 
+
+guard 'livereload' do
+  watch(%r{app/.+\.(erb|haml)}) { "http://0.0.0.0:3000" }
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{(public/|app/assets).+\.(css|js|html)})
+  watch(%r{(app/assets/.+\.css)\.s[ac]ss}) { |m| m[1] }
+  watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
+  watch(%r{config/locales/.+\.yml})
+end

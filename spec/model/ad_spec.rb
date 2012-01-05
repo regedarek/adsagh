@@ -1,35 +1,21 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe Ad do
-  let(:ad) { Ad.sham! }
+  let(:ad) { Ad.sham!(:build) }
 
-  it "should create a new instane given a valid attribute" do
-   ad.should be_valid
-  end
+  specify { ad.should be_valid }
 
-  it "should require a title" do
-    ad.title = nil
+  it "not creates a new instane given a invalid attribute" do
+    ad = Ad.new
     ad.should_not be_valid
   end
 
-  it "should require a category_id" do
-    ad.category_id = nil
-    ad.should_not be_valid
-  end
-
-  it "should require a ad_content" do
-    ad.ad_content = nil
-    ad.should_not be_valid
-  end
-
-  it "should require a name" do
-    ad.name = nil
-    ad.should_not be_valid
-  end
-
-  it "should require a price" do
-    ad.price = nil
-    ad.should_not be_valid
+  [:title, :category_id, :email, :ad_content, :name, :price].each do |attr|
+    it "should require a #{attr}" do
+      subject.valid?
+      subject.errors[attr].should include("nie może być puste") 
+    end
   end
 
   it "should reject names that are too long" do
@@ -38,17 +24,15 @@ describe Ad do
   end
 
   it "should accept valid email" do
-    addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp] 
-    addresses.each do |a|
-      ad.email = a
+    %w[user@foo.com THE_USER@foo.bar.org fi.rst@foo.jp].each do |address|
+      ad.email = address
       ad.should be_valid
     end
   end
 
   it "should reject invalid email" do
-    addresses = %w[user@foo,com The_USER_at_fd.org example.g@ffd.] 
-    addresses.each do |address|
-      ad.email = addresses
+    %w[user@foo,com The_USER_at_fd.org example.g@ffd.].each do |address|
+      ad.email = address 
       ad.should_not be_valid
     end
   end

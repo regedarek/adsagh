@@ -6,15 +6,15 @@ class SessionsController < ApplicationController
   def create
     admin = login(params[:username], params[:password])
     if admin
-      redirect_back_or_to verifications_path, :notice => "Zalogowano pomyślnie!"
+      redirect_back_or_to verifications_path, notice: t('authentication.login_succesfully')
     else
-      flash.now.alert = "Źle wpisałeś nazwę lub hasło!"
+      flash.now.alert = t('authentication.login_unsuccesfully') 
       render :new
     end
   end    
 
   def destroy
     logout
-    redirect_to root_url, :notice => "Wylogowano pomyślnie"
+    redirect_to root_url, notice: t('authentication.logout') 
   end
 end
