@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/fxposter/nested_form.git
+  revision: 485d20acc2385583571d8dc4ab709a1a7d69d0b3
+  specs:
+    nested_form (0.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -42,6 +48,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carrierwave (0.5.7)
+      activesupport (~> 3.0)
     childprocess (0.2.3)
       ffi (~> 1.0.6)
     coffee-rails (3.1.1)
@@ -216,6 +224,7 @@ PLATFORMS
 DEPENDENCIES
   ancestry
   capybara
+  carrierwave
   coffee-rails (~> 3.1.1)
   database_cleaner
   guard-livereload
@@ -227,6 +236,7 @@ DEPENDENCIES
   letter_opener
   libnotify
   mongrel (>= 1.2.0.pre2)
+  nested_form!
   nifty-generators
   omniauth-facebook
   omniauth-google-oauth2

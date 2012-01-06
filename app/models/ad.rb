@@ -1,8 +1,11 @@
 class Ad < ActiveRecord::Base
   belongs_to :advertiser
   belongs_to :admin
+  has_many :photos, :as => :attachable
 
-  attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter
+  attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter, :photos_attributes
+
+  accepts_nested_attributes_for :photos
 
   validates_presence_of :title, :name, :email, :ad_content, :price, :category_id
   validates_length_of :name, :within => 3..50

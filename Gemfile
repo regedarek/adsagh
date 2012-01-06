@@ -6,10 +6,13 @@ gem 'sqlite3'
 gem 'mongrel', '>= 1.2.0.pre2'
 gem 'jquery-rails'
 
-
 # Gemy potrzebne do działania aplikacji
 gem 'therubyracer'
 gem 'ancestry'
+
+# Gemy do zdjęć
+gem "carrierwave"
+gem 'nested_form', :git => 'https://github.com/fxposter/nested_form.git'
 
 # Gemy uwierzytelniania
 gem 'sorcery'
