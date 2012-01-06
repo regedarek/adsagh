@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/fxposter/nested_form.git
-  revision: 485d20acc2385583571d8dc4ab709a1a7d69d0b3
+  remote: git://github.com/ryanb/nested_form.git
+  revision: 54da3123d9f1b14b37df608794508adccd6ac5ba
   specs:
     nested_form (0.1.1)
 
@@ -163,6 +163,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
+    rmagick (2.13.1)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   rails (= 3.1.1)
   rb-inotify
+  rmagick
   rspec-rails
   sass-rails (~> 3.1.4)
   sham

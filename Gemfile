@@ -12,7 +12,8 @@ gem 'ancestry'
 
 # Gemy do zdjęć
 gem "carrierwave"
-gem 'nested_form', :git => 'https://github.com/fxposter/nested_form.git'
+gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
+gem 'rmagick'
 
 # Gemy uwierzytelniania
 gem 'sorcery'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106144414) do
+ActiveRecord::Schema.define(:version => 20120106165549) do
 
   create_table "admins", :force => true do |t|
     t.string   "username",         :null => false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120106144414) do
   create_table "photos", :force => true do |t|
     t.string   "file"
     t.integer  "attachable_id"
+    t.string   "attachable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

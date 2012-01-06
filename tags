@@ -1,0 +1,107 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Ad	app/models/ad.rb	/^class Ad < ActiveRecord::Base$/;"	c
+AdMailer	app/mailers/ad_mailer.rb	/^class AdMailer < ActionMailer::Base$/;"	c
+AddAncestryToCategories	db/migrate/20111213210641_add_ancestry_to_categories.rb	/^class AddAncestryToCategories < ActiveRecord::Migration$/;"	c
+Admin	app/models/admin.rb	/^class Admin < ActiveRecord::Base$/;"	c
+AdsController	app/controllers/ads_controller.rb	/^class AdsController < ApplicationController$/;"	c
+AdsHelper	app/helpers/ads_helper.rb	/^module AdsHelper$/;"	m
+Adsagh	config/application.rb	/^module Adsagh$/;"	m
+Advertiser	app/models/advertiser.rb	/^class Advertiser < ActiveRecord::Base$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Adsagh
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CapybaraExt	spec/support/capybara_ext.rb	/^module CapybaraExt$/;"	m
+CategoriesController	app/controllers/categories_controller.rb	/^class CategoriesController < ApplicationController$/;"	c
+CategoriesHelper	app/helpers/categories_helper.rb	/^module CategoriesHelper$/;"	m
+Category	app/models/category.rb	/^class Category < ActiveRecord::Base$/;"	c
+CreateAds	db/migrate/20111205171057_create_ads.rb	/^class CreateAds < ActiveRecord::Migration$/;"	c
+CreateAdvertisers	db/migrate/20111212194516_create_advertisers.rb	/^class CreateAdvertisers < ActiveRecord::Migration$/;"	c
+CreateCategories	db/migrate/20111213200544_create_categories.rb	/^class CreateCategories < ActiveRecord::Migration$/;"	c
+CreatePhotos	db/migrate/20120106165549_create_photos.rb	/^class CreatePhotos < ActiveRecord::Migration$/;"	c
+ErrorMessagesHelper	app/helpers/error_messages_helper.rb	/^module ErrorMessagesHelper$/;"	m
+FileUploader	app/uploaders/file_uploader.rb	/^class FileUploader < CarrierWave::Uploader::Base$/;"	c
+FormBuilderAdditions	app/helpers/error_messages_helper.rb	/^  module FormBuilderAdditions$/;"	m
+LayoutHelper	app/helpers/layout_helper.rb	/^module LayoutHelper$/;"	m
+MailerMacros	spec/support/mailer_macros.rb	/^ module MailerMacros$/;"	m
+Photo	app/models/photo.rb	/^class Photo < ActiveRecord::Base$/;"	c
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+SessionsHelper	app/helpers/sessions_helper.rb	/^module SessionsHelper$/;"	m
+SorceryCore	db/migrate/20111216183927_sorcery_core.rb	/^class SorceryCore < ActiveRecord::Migration$/;"	c
+VerificationsController	app/controllers/verifications_controller.rb	/^class VerificationsController < ApplicationController$/;"	c
+VerificationsHelper	app/helpers/verifications_helper.rb	/^module VerificationsHelper$/;"	m
+ad_token	app/mailers/ad_mailer.rb	/^  def ad_token(ad)$/;"	f	class:AdMailer
+assert_no_link_for!	spec/support/capybara_ext.rb	/^  def assert_no_link_for!(id_or_text)$/;"	f	class:CapybaraExt
+assert_seen	spec/support/capybara_ext.rb	/^  def assert_seen(text, opts={})$/;"	f	class:CapybaraExt
+auth	app/controllers/ads_controller.rb	/^  def auth$/;"	f	class:AdsController
+categories	app/controllers/ads_controller.rb	/^def categories$/;"	f
+change	db/migrate/20111205171057_create_ads.rb	/^  def change$/;"	f	class:CreateAds
+change	db/migrate/20111212194516_create_advertisers.rb	/^  def change$/;"	f	class:CreateAdvertisers
+change	db/migrate/20111213210641_add_ancestry_to_categories.rb	/^  def change$/;"	f	class:AddAncestryToCategories
+change	db/migrate/20120106165549_create_photos.rb	/^  def change$/;"	f	class:CreatePhotos
+confirm	app/controllers/ads_controller.rb	/^  def confirm$/;"	f	class:AdsController
+confirm_by	app/models/ad.rb	/^  def confirm_by(id, token)$/;"	f	class:Ad
+convert_number_column_value_with_comma_separator	config/initializers/comma_as_decimal_separator.rb	/^  def convert_number_column_value_with_comma_separator(value)$/;"	f
+create	app/controllers/ads_controller.rb	/^  def create$/;"	f	class:AdsController
+create	app/controllers/categories_controller.rb	/^  def create$/;"	f	class:CategoriesController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+create_by	app/models/ad.rb	/^  def create_by(email)$/;"	f	class:Ad
+default_url_options	app/controllers/application_controller.rb	/^  def default_url_options(options = nil)$/;"	f	class:ApplicationController
+destroy	app/controllers/categories_controller.rb	/^  def destroy$/;"	f	class:CategoriesController
+destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
+discard	app/controllers/verifications_controller.rb	/^  def discard $/;"	f	class:VerificationsController
+discard_info	app/controllers/verifications_controller.rb	/^  def discard_info$/;"	f	class:VerificationsController
+down	db/migrate/20111213200544_create_categories.rb	/^  def self.down$/;"	F	class:CreateCategories
+down	db/migrate/20111213210641_add_ancestry_to_categories.rb	/^  def self.down$/;"	F	class:AddAncestryToCategories
+down	db/migrate/20111216183927_sorcery_core.rb	/^  def self.down$/;"	F	class:SorceryCore
+edit	app/controllers/ads_controller.rb	/^  def edit$/;"	f	class:AdsController
+edit	app/controllers/categories_controller.rb	/^  def edit$/;"	f	class:CategoriesController
+error_messages	app/helpers/error_messages_helper.rb	/^    def error_messages(options = {})$/;"	f	class:FormBuilderAdditions
+error_messages_for	app/helpers/error_messages_helper.rb	/^  def error_messages_for(*objects)$/;"	f	class:ErrorMessagesHelper
+flash_alert!	spec/support/capybara_ext.rb	/^  def flash_alert!(text)$/;"	f	class:CapybaraExt
+flash_notice!	spec/support/capybara_ext.rb	/^  def flash_notice!(text)$/;"	f
+generate_token	app/models/ad.rb	/^  def generate_token(column)$/;"	f	class:Ad
+index	app/controllers/ads_controller.rb	/^  def index$/;"	f	class:AdsController
+index	app/controllers/categories_controller.rb	/^  def index$/;"	f	class:CategoriesController
+index	app/controllers/verifications_controller.rb	/^  def index$/;"	f	class:VerificationsController
+javascript	app/helpers/layout_helper.rb	/^  def javascript(*args)$/;"	f	class:LayoutHelper
+last_email	spec/support/mailer_macros.rb	/^ 	def last_email$/;"	f	class:MailerMacros
+log_in	spec/support/helpers.rb	/^def log_in(admin)$/;"	f
+makeRed	public/output.html	/^  function makeRed(element_id) {$/;"	f
+makeRed	public/test.html	/^  function makeRed(element_id) {$/;"	f
+makeYellow	public/output.html	/^  function makeYellow(element_id) {$/;"	f
+makeYellow	public/test.html	/^  function makeYellow(element_id) {$/;"	f
+moveProgressBar	public/output.html	/^  function moveProgressBar(percentDone) {$/;"	f
+moveProgressBar	public/test.html	/^  function moveProgressBar(percentDone) {$/;"	f
+nested_categories	app/helpers/categories_helper.rb	/^	def nested_categories(categories)$/;"	f	class:CategoriesHelper
+nested_categories_tree	app/helpers/categories_helper.rb	/^	def nested_categories_tree(categories)$/;"	f	class:CategoriesHelper.nested_categories
+new	app/controllers/ads_controller.rb	/^  def new    $/;"	f	class:AdsController
+new	app/controllers/categories_controller.rb	/^  def new$/;"	f	class:CategoriesController
+new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
+not_authenticated	app/controllers/application_controller.rb	/^  def not_authenticated$/;"	f	class:ApplicationController
+number_field	config/initializers/number_field.rb	/^  def number_field(field, options = {})$/;"	f
+page!	spec/support/capybara_ext.rb	/^  def page!$/;"	f
+page!	spec/support/helpers.rb	/^def page!$/;"	f
+reset_email	spec/support/mailer_macros.rb	/^  	def reset_email$/;"	f	class:MailerMacros
+resolve_layout	app/controllers/categories_controller.rb	/^def resolve_layout$/;"	f
+selector_for	spec/support/capybara_ext.rb	/^  def selector_for(identifier)$/;"	f
+send_discard_info	app/models/ad.rb	/^  def send_discard_info(discard_info)$/;"	f	class:Ad
+send_edit_link	app/mailers/ad_mailer.rb	/^  def send_edit_link(ad)$/;"	f	class:AdMailer
+send_edit_link	app/models/ad.rb	/^  def send_edit_link$/;"	f	class:Ad
+show	app/controllers/ads_controller.rb	/^  def show$/;"	f	class:AdsController
+show_title?	app/helpers/layout_helper.rb	/^  def show_title?$/;"	f	class:LayoutHelper
+store_dir	app/uploaders/file_uploader.rb	/^  def store_dir$/;"	f	class:FileUploader
+stylesheet	app/helpers/layout_helper.rb	/^  def stylesheet(*args)$/;"	f	class:LayoutHelper
+title	app/helpers/layout_helper.rb	/^  def title(page_title, show_title = true)$/;"	f	class:LayoutHelper
+to_param	app/models/ad.rb	/^  def to_param$/;"	f	class:Ad
+type_cast_with_comma_separator	config/initializers/comma_as_decimal_separator.rb	/^  def type_cast_with_comma_separator(value)$/;"	f
+up	db/migrate/20111213200544_create_categories.rb	/^  def self.up$/;"	F	class:CreateCategories
+up	db/migrate/20111216183927_sorcery_core.rb	/^  def self.up$/;"	F	class:SorceryCore
+update	app/controllers/ads_controller.rb	/^  def update$/;"	f	class:AdsController
+update	app/controllers/categories_controller.rb	/^  def update$/;"	f	class:CategoriesController
+verify	app/controllers/verifications_controller.rb	/^  def verify$/;"	f	class:VerificationsController
+why_discard	app/mailers/ad_mailer.rb	/^  def why_discard(ad, discard_info)$/;"	f	class:AdMailer

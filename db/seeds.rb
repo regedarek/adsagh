@@ -1,3 +1,4 @@
+# encoding: UTF-8
 admin = Admin.create(:username => 'admin', :password => 'admin', :email => 'admin@agh.pl')
 ad1 = Ad.create(
 								:title => 'Ogłoszenie niepotwierdzone',
