@@ -27,7 +27,7 @@ end
 
 
 guard 'livereload' do
-  watch(%r{app/.+\.(erb|haml)}) { "http://0.0.0.0:3000" }
+  watch(%r{app/.+\.(erb|haml)})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{(public/|app/assets).+\.(css|js|html)})
   watch(%r{(app/assets/.+\.css)\.s[ac]ss}) { |m| m[1] }
