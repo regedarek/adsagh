@@ -1,14 +1,19 @@
 pl:  
   simple_form:
     labels:
-      defaults:
-        name: "Nazwa ogłoszeniodawcy"
-        password: 'Password'
-        title: "Tytul"
+      name: "Nazwa ogłoszeniodawcy"
+      title: "Tytuł"
+      price: "Cena"
+      category_id: "Kategoria"
+      email: "Email"
+      phone_number: "Numer telefonu"
+      ad_content: "Treść"
+      submit: "Dodaj ogłoszenie"
     hints:
-      defaults:
-        name: 'User name to sign in.'
-        
+      title: "Maksymalnie 50 znaków"
+      category_id: "Możesz wpisać nr kategori ręcznie, lub wybrać z menu poniżej"
+      phone_number: "Numer telefonu komórkowego bez zera np: 600123456"
+
   root_path: "Strona główna"
   create: "Dodaj"
   show: "Pokaż"

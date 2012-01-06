@@ -1,14 +1,14 @@
 - title "Dodaj ogłoszenie"
 .ads
   = simple_form_for @ad do |f|
-    =f.input :title, :label=>"Tytuł", :hint=>"Maksymalnie 50 znaków"
-    =f.input :price, :label=>"Cena"
-    =f.input :category_id, :label=>"Kategoria" , :hint=>"Możesz wpisać nr kategori ręcznie, lub wybrać z menu poniżej."
+    =f.input :title
+    =f.input :price
+    =f.input :category_id
     =render :partial => "categories/bar"
-    = f.input :name,:input_html => { :value => cookies[:name] }, :label=>"Ty" , :hint=>"Możesz podać imię, nazwisko, pseudonim lub to wszystko na raz."
+    = f.input :name, :input_html => { :value => cookies[:name] }
     = f.input :email, :input_html => { :value => cookies[:email] }
-    = f.input :phone_number, :input_html => { :value => cookies[:phone_number] }, :label=>"Telefon", :hint=>"Numer telefonu komórkowego bez zera np: 600123456"
-    =f.input :ad_content, :label=>"Treść"
+    = f.input :phone_number, :input_html => { :value => cookies[:phone_number] }
+    =f.input :ad_content
     .submit
       =f.button :submit
 
