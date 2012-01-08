@@ -10,6 +10,9 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'ancestry'
 
+# Gemy do konfiguracji
+gem "rails_config"
+
 # Gemy do zdjęć
 gem "carrierwave"
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
@@ -36,8 +39,8 @@ gem "rspec-rails", :group => [:test, :development]
 group :test do
   gem 'database_cleaner'
   gem "capybara"
-  gem 'libnotify', :require => false
-  gem 'rb-inotify', :require => false
+  gem 'libnotify'
+  gem 'rb-inotify'
   gem 'launchy'
   gem 'spork', ">0.9.0.rc"
   gem "guard-rspec"

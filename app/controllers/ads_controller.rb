@@ -6,7 +6,7 @@ class AdsController < ApplicationController
     @ads = Ad.where("advertiser_id IS NOT NULL AND verification_date IS NOT NULL")
   end
 
-  def new    
+  def new
     @ad = Ad.new
   end
 
@@ -22,12 +22,12 @@ class AdsController < ApplicationController
       render :new
     end
   end
- 
+
   def edit
     @ad = Ad.find(params[:id])
     if @ad.token = params[:token] || logged_in?
     else
-      redirect_to root_path, alert: t('ad.edit.wrong_token') 
+      redirect_to root_path, alert: t('ad.edit.wrong_token')
     end
   end
 
@@ -35,10 +35,10 @@ class AdsController < ApplicationController
     @ad = Ad.find(params[:id])
     @ad.update_attributes(params[:ad])
     @ad.update_attributes(:verification_date => nil)
-    if logged_in? 
+    if logged_in?
       redirect_to verifications_path, notice: t('ad.update')
-    else  
-      redirect_to @ad, notice: t('ad.update') 
+    else
+      redirect_to @ad, notice: t('ad.update')
     end
   end
 
@@ -65,7 +65,6 @@ class AdsController < ApplicationController
 end
 
 private
-
 def categories
     @roots = Category.where("ancestry IS NULL").order(:name)
     @categories = Category.arrange(:order=>:name)

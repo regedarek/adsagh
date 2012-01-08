@@ -8,12 +8,12 @@ class Ad < ActiveRecord::Base
   accepts_nested_attributes_for :photos
 
   validates_presence_of :title, :name, :email, :ad_content, :price, :category_id
-  validates_length_of :name, :within => 3..50
+  validates_length_of :name, :within => Settings.ad.min_name_size..Settings.ad.max_name_size
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates_numericality_of :price, :greater_than => 0, :less_than => 1000000  # http://stackoverflow.com/questions/4467224/rails-why-format-regex-validation-fails
 
   before_create { generate_token(:token) }
-  
+
   def send_edit_link
     AdMailer.send_edit_link(self).deliver
   end

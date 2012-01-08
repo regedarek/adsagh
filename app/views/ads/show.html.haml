@@ -17,8 +17,9 @@
 	%b Cena:
 	= @ad.price
 %br
-#photos
-	= image_tag @ad.photos.first.file
+- if @ad.photos.present?
+	#photos
+		= image_tag @ad.photos.first.file
 %br
 #display_counter
 	%b Liczba wyświetleń:

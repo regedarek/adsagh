@@ -62,8 +62,11 @@ edit	app/controllers/ads_controller.rb	/^  def edit$/;"	f	class:AdsController
 edit	app/controllers/categories_controller.rb	/^  def edit$/;"	f	class:CategoriesController
 error_messages	app/helpers/error_messages_helper.rb	/^    def error_messages(options = {})$/;"	f	class:FormBuilderAdditions
 error_messages_for	app/helpers/error_messages_helper.rb	/^  def error_messages_for(*objects)$/;"	f	class:ErrorMessagesHelper
+extension_white_list	app/uploaders/file_uploader.rb	/^  def extension_white_list$/;"	f	class:FileUploader
+filename	app/uploaders/file_uploader.rb	/^  def filename$/;"	f	class:FileUploader
 flash_alert!	spec/support/capybara_ext.rb	/^  def flash_alert!(text)$/;"	f	class:CapybaraExt
 flash_notice!	spec/support/capybara_ext.rb	/^  def flash_notice!(text)$/;"	f
+full_filename	app/uploaders/file_uploader.rb	/^    def full_filename (for_file = model.file) $/;"	f	class:FileUploader
 generate_token	app/models/ad.rb	/^  def generate_token(column)$/;"	f	class:Ad
 index	app/controllers/ads_controller.rb	/^  def index$/;"	f	class:AdsController
 index	app/controllers/categories_controller.rb	/^  def index$/;"	f	class:CategoriesController
@@ -79,7 +82,7 @@ moveProgressBar	public/output.html	/^  function moveProgressBar(percentDone) {$/
 moveProgressBar	public/test.html	/^  function moveProgressBar(percentDone) {$/;"	f
 nested_categories	app/helpers/categories_helper.rb	/^	def nested_categories(categories)$/;"	f	class:CategoriesHelper
 nested_categories_tree	app/helpers/categories_helper.rb	/^	def nested_categories_tree(categories)$/;"	f	class:CategoriesHelper.nested_categories
-new	app/controllers/ads_controller.rb	/^  def new    $/;"	f	class:AdsController
+new	app/controllers/ads_controller.rb	/^  def new$/;"	f	class:AdsController
 new	app/controllers/categories_controller.rb	/^  def new$/;"	f	class:CategoriesController
 new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
 not_authenticated	app/controllers/application_controller.rb	/^  def not_authenticated$/;"	f	class:ApplicationController
