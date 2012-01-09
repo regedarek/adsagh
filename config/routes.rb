@@ -1,6 +1,8 @@
 Adsagh::Application.routes.draw do
   get "zaloguj" => "sessions#new", :as => "zaloguj"
   get "wyloguj" => "sessions#destroy", :as => "wyloguj"
+  match "/signout" => "ads#signout_advertiser", :as => :signout
+
   resources :sessions
 
   resources :categories

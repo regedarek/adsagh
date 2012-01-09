@@ -6,8 +6,16 @@
     =f.input :price
     =f.input :category_id
     =render :partial => "categories/bar"
-    = f.input :name, :input_html => { :value => cookies[:name] }
-    = f.input :email, :input_html => { :value => cookies[:email] }
+    - if current_adv
+      -# Kontakt:
+      -# = session[:adv_name]
+      -# Email:
+      -# = session[:adv_email]
+      = f.input :name, :as => :hidden, :input_html => { :value => session[:adv_name] }
+      = f.input :email, :as => :hidden, :input_html => { :value => session[:adv_email] } 
+    - else
+      = f.input :name, :input_html => { :value => cookies[:name] }
+      = f.input :email, :input_html => { :value => cookies[:email] }
     = f.input :phone_number, :input_html => { :value => cookies[:phone_number] }
     =f.input :ad_content
 

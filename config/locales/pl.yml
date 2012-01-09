@@ -50,6 +50,7 @@ pl:
       unsuccesfully_confirmed_email: "Błędny kod potwierdzający"
     auth:
       succesfully_authenticated: "Uwierzytelniono pomyślnie."
+      succesfully_destroy_session: "Wylogowano"
     verify:
       succesfully_verified: "Zweryfikowano pomyślnie!"
     discard:

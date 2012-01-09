@@ -16,7 +16,7 @@ describe 'Categories' do
 		click_on "Nowa kategoria"
 		fill_in 'Nazwa', :with => 'Komputery'
 		click_on 'Dodaj Category'
-		current_path.should eq("/categories.html")
+		current_path.should eq(categories_path)
 		flash_notice!("Utworzono kategorię")
 	end
 
