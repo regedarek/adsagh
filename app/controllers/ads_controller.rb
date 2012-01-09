@@ -50,10 +50,19 @@ class AdsController < ApplicationController
 #custom actions
   def auth
     auth = request.env["omniauth.auth"]
-    cookies.permanent[:email] = auth["info"]["email"]
-    cookies.permanent[:name] = auth["info"]["name"]
-    cookies.permanent[:phone_number] = auth["info"]["phone"]
+    session[:adv_email] = cookies.permanent[:email] = auth["info"]["email"]
+    session[:adv_name] = cookies.permanent[:name] = auth["info"]["name"]
+    session[:adv_phone] = cookies.permanent[:phone_number] = auth["info"]["phone"]
     redirect_to new_ad_path, notice: t('ad.auth.succesfully_authenticated')
+  end
+  
+  def signout_advertiser
+    # session[:adv_email] = session[:adv_name] = session[:adv_phone] = nil
+    cookies.delete :email
+    cookies.delete :name
+    cookies.delete :phone_number 
+    reset_session
+    redirect_to root_url, notice: t('ad.auth.succesfully_destroy_session')
   end
 
   def confirm

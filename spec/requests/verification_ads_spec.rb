@@ -15,7 +15,7 @@ describe 'Verification' do
     
     it "show me only confirm ads" do
       log_in @admin 
-      current_path.should eql("/verifications.html")
+      current_path.should eql(verifications_path)
       # page!
       page.should_not have_selector(:name, :text => @ad1.name)
       assert_seen(@ad2.name, :within => :name)
@@ -30,7 +30,7 @@ describe 'Verification' do
       assert_seen(@ad2.name, :within => :name)
       assert_seen(@ad2.ad_content, :within => :ad_content)
       click_link "Weryfikuj"
-      current_path.should eql("/verifications.html")
+      current_path.should eql(verifications_path)
       flash_notice!("Zweryfikowano pomyślnie!")
       last_email.to.should include(@ad2.email)
       visit root_path
@@ -45,7 +45,7 @@ describe 'Verification' do
       fill_in "Powód", :with => "bo nie"
       click_button "Wyślij"
       last_email.body.should include("bo nie")
-      current_path.should eql("/verifications.html")
+      current_path.should eql(verifications_path)
       flash_notice!("Odrzucono ogłoszenie!")
       page.should_not have_selector(:name, :text => @ad2.name)
     end

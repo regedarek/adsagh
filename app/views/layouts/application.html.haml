@@ -13,7 +13,14 @@
   %body
     .black_mamba
     #container
-      - if logged_in? 
+      - if current_adv
+        Witamy,
+        = current_adv.name
+        = link_to "Wyloguj", signout_path
+      - else
+        = link_to "Google", "http://localhost:3000/auth/google_oauth2"
+        = link_to "Facebook", "http://0.0.0.0:3000/auth/facebook"
+      - if logged_in?
         Zalogowany jako
         = current_user.username
         = link_to "Strona Główna", root_path
@@ -25,10 +32,8 @@
       #content
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}"
-        
+
         - if show_title?
           %h1= yield(:title)
-        
+
         = yield
-
-

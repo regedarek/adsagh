@@ -50,7 +50,7 @@ create	app/controllers/ads_controller.rb	/^  def create$/;"	f	class:AdsControlle
 create	app/controllers/categories_controller.rb	/^  def create$/;"	f	class:CategoriesController
 create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
 create_by	app/models/ad.rb	/^  def create_by(email)$/;"	f	class:Ad
-default_url_options	app/controllers/application_controller.rb	/^  def default_url_options(options = nil)$/;"	f	class:ApplicationController
+current_adv	app/controllers/application_controller.rb	/^  def current_adv$/;"	f	class:ApplicationController
 destroy	app/controllers/categories_controller.rb	/^  def destroy$/;"	f	class:CategoriesController
 destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
 discard	app/controllers/verifications_controller.rb	/^  def discard $/;"	f	class:VerificationsController
@@ -97,6 +97,7 @@ send_edit_link	app/mailers/ad_mailer.rb	/^  def send_edit_link(ad)$/;"	f	class:A
 send_edit_link	app/models/ad.rb	/^  def send_edit_link$/;"	f	class:Ad
 show	app/controllers/ads_controller.rb	/^  def show$/;"	f	class:AdsController
 show_title?	app/helpers/layout_helper.rb	/^  def show_title?$/;"	f	class:LayoutHelper
+signout_advertiser	app/controllers/ads_controller.rb	/^  def signout_advertiser$/;"	f	class:AdsController
 store_dir	app/uploaders/file_uploader.rb	/^  def store_dir$/;"	f	class:FileUploader
 stylesheet	app/helpers/layout_helper.rb	/^  def stylesheet(*args)$/;"	f	class:LayoutHelper
 title	app/helpers/layout_helper.rb	/^  def title(page_title, show_title = true)$/;"	f	class:LayoutHelper

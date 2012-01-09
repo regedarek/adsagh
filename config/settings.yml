@@ -1,3 +1,6 @@
 ad:
   max_name_size: 50
   min_name_size: 3
+
+#Change to true for .html in path
+url_with_html: false
