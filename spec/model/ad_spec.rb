@@ -18,8 +18,13 @@ describe Ad do
     end
   end
 
+  it "should reject names that are too short" do
+    ad.name = "a" * (Settings.ad.min_name_size - 1)
+    ad.should_not be_valid
+  end
+
   it "should reject names that are too long" do
-    ad.name = "a" * 51
+    ad.name = "a" * (Settings.ad.max_name_size + 1)
     ad.should_not be_valid
   end
 

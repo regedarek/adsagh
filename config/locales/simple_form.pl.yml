@@ -1,10 +1,1 @@
-pl:  
-  simple_form:
-    labels:
-      defaults:
-        name: "Nazwa ogłoszeniodawcy"
-        password: 'Password'
-        title: "Tytul"
-    hints:
-      defaults:
-        name: 'User name to sign in.'
+pl:

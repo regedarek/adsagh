@@ -6,16 +6,20 @@
 	= @ad.ad_content
 %br
 #name
-	%b Imię i nazwisko: 
+	%b Imię i nazwisko:
 	= @ad.name
 %br
 #email
-	%b Email: 
+	%b Email:
 	= @ad.email
 %br
 #price
-	%b Cena: 
+	%b Cena:
 	= @ad.price
+%br
+- if @ad.photos.present?
+	#photos
+		= image_tag @ad.photos.first.file
 %br
 #display_counter
 	%b Liczba wyświetleń:
