@@ -27,6 +27,7 @@ gem 'omniauth-google-oauth2'
 gem "haml-rails"
 gem 'nifty-generators', :group => :development
 gem 'simple_form'
+gem 'bootstrap-sass', '~> 1.4.3'
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'

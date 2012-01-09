@@ -1,3 +1,9 @@
+// Ustawienie Tweeter Bootstrao
+$gridColumns: 16
+$gridColumnWidth: 73px
+$gridGutterWidth: 3px
+@import bootstrap
+
 @import colors
 @import mixins
 @import simple_form
@@ -6,7 +12,8 @@
 
 
 body
-  background-color: $primary_color
+  padding-top: 50px
+  background: $primary_color url('http://dbooom.com/themes/html/manifest/images/body-bg.gif')
   font:
     family: Helvetica, Arial
     size: 14px
@@ -25,37 +32,17 @@ h1
   clear: both
   height: 0
   overflow: hidden
-
-#top
-  position: absolute
-  width: 100%
-  height: 40px
-  top: 0
-  background-color: #6C8A4A  
-  
-#container
-  width: 1200px
-  margin: 0 auto
-  margin-top: 20px
-    
-  
+ 
 #content
-  float: left
-  padding: 20px 40px  
-  width: 80%
+  padding: 10px 10px 50px 10px
   background: white
   @include radius 
   @include shadow
-  margin-bottom: 20px
-  
+  margin: 0 0 20px 5px
+ 
 
 #sidebar
-  float: left
-  margin:
-    right: 5px
-  width: 10%
   a
-    width: 85px
     :display inline-block
     :text-align center
     :padding 10px 10px
@@ -68,49 +55,6 @@ h1
       :cursor pointer
       :background-color darken($menu_color, 10%)
     
-
-
-#flash_notice,
-#flash_error,
-#flash_alert
-  padding: 5px 8px
-  margin: 10px 0
-
-#flash_notice
-  background-color: #ccffcc
-  border: solid 1px #66cc66
-
-#flash_error,
-#flash_alert
-  background-color: #ffcccc
-  border: solid 1px #cc6666
-
-.fieldWithErrors
-  display: inline
-
-.error_messages
-  width: 400px
-  border: 2px solid #cf0000
-  padding: 0
-  padding-bottom: 12px
-  margin-bottom: 20px
-  background-color: #f0f0f0
-  font:
-    size: 12px
-  h2
-    text-align: left
-    padding: 5px 5px 5px 15px
-    margin: 0
-    font:
-      weight: bold
-      size: 12px
-    background-color: #cc0000
-    color: white
-  p
-    margin: 8px 10px
-  ul
-    margin: 0
-
 .black_mamba
   display: none
   opacity: 0.4
@@ -122,3 +66,6 @@ h1
   left: 0
   z-index: 80
   background: black
+
+.alert-message
+  text-align: center

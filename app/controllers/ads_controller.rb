@@ -59,6 +59,7 @@ class AdsController < ApplicationController
     session[:adv_name] = cookies.permanent[:name] = auth["info"]["name"]
     session[:adv_phone] = cookies.permanent[:phone_number] = auth["info"]["phone"]
     redirect_to new_ad_path, notice: t('ad.auth.succesfully_authenticated')
+
   end
   
   def signout_advertiser
