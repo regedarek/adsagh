@@ -1,0 +1,11 @@
+TODO:
+	1. dorobić kontroler do uwierzytelniania ogłoszeniodawcy
+	2. dodać testy do kategorii
+	3. dodać testy w przypadku niepowowdzenia
+	4. dodać levele ogłoszeń
+	5. dodać name_scopy do panelu admina
+	6. dodać testy do name_scopów
+	7. dodać testy do relacji
+	8. dodać szybką weryfikację
+	9. statystyki
+	10. wyszukiwanie
