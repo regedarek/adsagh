@@ -44,9 +44,9 @@ group :test do
   gem 'rb-inotify'
   gem 'launchy'
   gem 'spork', ">0.9.0.rc"
+	gem 'guard', '>= 0.9.4'
   gem "guard-rspec"
   gem 'guard-spork'
-	gem 'guard-livereload'
   gem 'sham'
 end
 
