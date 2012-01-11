@@ -8,6 +8,8 @@ gem 'jquery-rails'
 
 # Gemy potrzebne do działania aplikacji
 gem 'therubyracer'
+
+#Gemy do kategori
 gem 'ancestry'
 
 # Gemy do konfiguracji

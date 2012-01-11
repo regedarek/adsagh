@@ -1,14 +1,28 @@
 
+/ TO jeszcze do dopracowania
 .hero-unit
-  %h1 cos
+  %h2 
+    Witaj w serwisie 
+  %h1
+    :erb
+      tablica.in<span class="ternetowa">ternetowa</span>
+  %h2 Ogłoszenia dedykowane społecznością lokalnym.
+  %br
+  = link_to "Dowiedz się więcej", root_path, :class=>"btn primary large pull-right"
 
+%h2 Promowane ogłoszenia
 - if @ads.empty?
   brak ogłoszeń w bazie
 - else
-  - @ads.each do |ad|
-    #title.ad
-      = ad.category_id
-      = link_to ad.title, short_ad_path(ad)
+  %table.zebra-striped
+    %tr
+      %th ogłoszenie
+      %th popularność
+    - @ads.each do |ad|
+      %tr
+        %td=link_to ad.title, short_ad_path(ad)
+        %td=ad.display_counter
+
 
 - content_for :content_menu do
   = link_to "Dodaj ogłoszenie", new_ad_path
