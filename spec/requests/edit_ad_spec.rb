@@ -5,10 +5,10 @@ describe 'Edit ad' do
   before(:all) do
     @ad = Ad.sham!
   end
-  
+
   describe 'Advertiser try edit ad' do
     it 'with token link form email' do
-      visit "http://0.0.0.0/ads/edit/#{@ad.id}/#{@ad.token}" 
+      visit "http://0.0.0.0/ads/edit/#{@ad.id}/#{@ad.token}"
       page.should have_content("Edytuj ogłoszenie")
       fill_in 'ad_title', :with => "Nerka100"
       fill_in 'ad_price', :with => "77"
