@@ -2,6 +2,8 @@ class Ad < ActiveRecord::Base
   belongs_to :advertiser
   belongs_to :admin
 
+  scope :unconfirmed_ads,  :conditions => ["advertiser_id IS NULL"]
+
   attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter, :photos_attributes
 
   has_many :photos, :as => :attachable
