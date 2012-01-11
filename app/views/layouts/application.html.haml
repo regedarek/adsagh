@@ -15,7 +15,7 @@
     .topbar
       .fill
         .container
-          =render :partial=> "layouts/top-bar"
+          -# =render :partial=> "layouts/top-bar"
     .container
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}", :class=>"alert-message error"
@@ -23,7 +23,7 @@
         .span2
           #sidebar
             =yield :content_menu
-            =render :partial=> "layouts/login-menu"
+            -# =render :partial=> "layouts/login-menu"
         .span14
           .content 
             - if show_title?
