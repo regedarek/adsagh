@@ -20,7 +20,7 @@
       %th popularność
     - @ads.each do |ad|
       %tr
-        %td=link_to ad.title, short_ad_path(ad)
+        %td.ad=link_to ad.title, short_ad_path(ad)
         %td=ad.display_counter
 
 

@@ -7,7 +7,7 @@ describe "New ad specs" do
       @ads = Array.new(3) { Ad.sham!(:advertiser_id => 1, :verification_date => Time.now) }
       Category.sham!
       visit root_path
-      # page.should have_selector("title", :text => "Lista ogłoszeń")
+      page.should have_selector("h1", :text => "tablica")
       page.should have_selector(".ad", :count => 3)
       @ads.each do |ad|
         page.should have_css(".ad", :text => ad.title )

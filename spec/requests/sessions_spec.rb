@@ -26,7 +26,7 @@ describe 'Sessions' do
   context "User log out" do
 		it 'should be able to log out' do
 			log_in admin
-      # page.should have_content("Wyloguj")
+      page.should have_content("Wyloguj")
 			visit '/wyloguj'
       page.should have_content("Wylogowano pomyślnie")
 		end
