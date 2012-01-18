@@ -61,12 +61,12 @@ class AdsController < ApplicationController
     redirect_to new_ad_path, notice: t('ad.auth.succesfully_authenticated')
 
   end
-  
+
   def signout_advertiser
     # session[:adv_email] = session[:adv_name] = session[:adv_phone] = nil
     cookies.delete :email
     cookies.delete :name
-    cookies.delete :phone_number 
+    cookies.delete :phone_number
     reset_session
     redirect_to root_url, notice: t('ad.auth.succesfully_destroy_session')
   end

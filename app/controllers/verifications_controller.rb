@@ -2,7 +2,7 @@
 class VerificationsController < ApplicationController
   before_filter :require_login
   def index
-    @ads = Ad.where("advertiser_id IS NOT NULL AND verification_date IS NULL")
+    @ads = Ad.with_some_scope(params[:scope], params[:email])
   end
 
   def verify
@@ -17,7 +17,7 @@ class VerificationsController < ApplicationController
     @ad = Ad.find(params[:id])
   end
 
-  def discard 
+  def discard
     @ad = Ad.find(params[:id])
     @discard_info = params[:discard_info]
     @ad.send_discard_info(@discard_info)

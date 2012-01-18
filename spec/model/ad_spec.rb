@@ -4,45 +4,62 @@ require 'spec_helper'
 describe Ad do
   let(:ad) { Ad.sham!(:build) }
 
-  specify { ad.should be_valid }
+  describe "Validations" do
 
-  it "not creates a new instane given a invalid attribute" do
-    ad = Ad.new
-    ad.should_not be_valid
-  end
+    specify { ad.should be_valid }
 
-  [:title, :category_id, :email, :ad_content, :name, :price].each do |attr|
-    it "should require a #{attr}" do
-      subject.valid?
-      subject.errors[attr].should include("nie może być puste") 
-    end
-  end
-
-  it "should reject names that are too short" do
-    ad.name = "a" * (Settings.ad.min_name_size - 1)
-    ad.should_not be_valid
-  end
-
-  it "should reject names that are too long" do
-    ad.name = "a" * (Settings.ad.max_name_size + 1)
-    ad.should_not be_valid
-  end
-
-  it "should accept valid email" do
-    %w[user@foo.com THE_USER@foo.bar.org fi.rst@foo.jp].each do |address|
-      ad.email = address
-      ad.should be_valid
-    end
-  end
-
-  it "should reject invalid email" do
-    %w[user@foo,com The_USER_at_fd.org example.g@ffd.].each do |address|
-      ad.email = address 
+    it "not creates a new instane given a invalid attribute" do
+      ad = Ad.new
       ad.should_not be_valid
     end
+
+    [:title, :category_id, :email, :ad_content, :name, :price].each do |attr|
+      it "should require a #{attr}" do
+        subject.valid?
+        subject.errors[attr].should include("nie może być puste")
+      end
+    end
+
+    it "should reject names that are too short" do
+      ad.name = "a" * (Settings.ad.min_name_size - 1)
+      ad.should_not be_valid
+    end
+
+    it "should reject names that are too long" do
+      ad.name = "a" * (Settings.ad.max_name_size + 1)
+      ad.should_not be_valid
+    end
+
+    it "should accept valid email" do
+      %w[user@foo.com THE_USER@foo.bar.org fi.rst@foo.jp].each do |address|
+        ad.email = address
+        ad.should be_valid
+      end
+    end
+
+    it "should reject invalid email" do
+      %w[user@foo,com The_USER_at_fd.org example.g@ffd.].each do |address|
+        ad.email = address
+        ad.should_not be_valid
+      end
+    end
   end
 
-  it "should be display_counter null" do 
+  describe "Custom finders" do
+    before do
+      Ad.delete_all
+      @uncad = Ad.sham!()
+      @cad = Ad.sham!(:advertiser_id => 2)
+      @vad = Ad.sham!(:advertiser_id => 1, :verification_date => Time.now)
+      Ad.count.should == 3
+    end
+
+    it "find unconfirmed" do
+      Ad.unconfirmed_ads.should == [@uncad]
+    end
+  end
+
+  it "should be display_counter null" do
     ad.display_counter.should eq(0)
   end
 

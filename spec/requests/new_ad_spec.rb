@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe "New ad specs" do
-  describe "On the root_path", :focus  do
+  describe "On the root_path" do
     it "listing all ads" do
       @ads = Array.new(3) { Ad.sham!(:advertiser_id => 1, :verification_date => Time.now) }
       Category.sham!

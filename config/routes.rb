@@ -2,7 +2,6 @@ Adsagh::Application.routes.draw do
   get "zaloguj" => "sessions#new", :as => "zaloguj"
   get "wyloguj" => "sessions#destroy", :as => "wyloguj"
   match "/signout" => "ads#signout_advertiser", :as => :signout
-
   resources :sessions
 
   resources :categories
@@ -15,8 +14,9 @@ Adsagh::Application.routes.draw do
       put 'discard_info'
     end
   end
+  match "/verifications/:scope" => "verifications#index"
 
-  resources :ads do    
+  resources :ads do
     member do
       get 'confirm'
     end

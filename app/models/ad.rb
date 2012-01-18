@@ -2,7 +2,10 @@ class Ad < ActiveRecord::Base
   belongs_to :advertiser
   belongs_to :admin
 
+  scope :confirmed_ads,  :conditions => ["advertiser_id IS NOT NULL"]
   scope :unconfirmed_ads,  :conditions => ["advertiser_id IS NULL"]
+  scope :unverified_ads,  :conditions => ["advertiser_id IS NOT NULL AND verification_date IS NULL"]
+  scope :ads_by_user, lambda { |email| { :conditions => ["email = ?", email] } }
 
   attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter, :photos_attributes
 
@@ -49,6 +52,22 @@ class Ad < ActiveRecord::Base
       :succesfully_confirmed_email
     else
       :unsuccesfully_confirmed_email
+    end
+  end
+
+  def self.with_some_scope(scope_name, email)
+    case scope_name
+      when 'unverified_ads'
+        self.unverified_ads
+      when 'unconfirmed_ads'
+        self.unconfirmed_ads
+      when 'confirmed_ads'
+        self.confirmed_ads
+      when 'ads_by_user'
+        self.ads_by_user(email)
+      else
+        #domyslny scope
+        self.unverified_ads
     end
   end
 

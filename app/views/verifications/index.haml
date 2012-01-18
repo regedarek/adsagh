@@ -1,13 +1,22 @@
-%h3 
-  Ogłoszenia do zweryfikowania 
-  [ 
-  = @ads.size
-  ]
+= link_to "Ogłoszenia do zweryfikowania", verifications_path(:scope => "unverified_ads")
+[
+= Ad.unverified_ads.count
+]
+= link_to "Ogłoszenia potwierdzone", verifications_path(:scope => "confirmed_ads")
+[
+= Ad.confirmed_ads.count
+]
+= link_to "Ogłoszenia niepotwierdzone", verifications_path(:scope => "unconfirmed_ads") 
+[
+= Ad.unconfirmed_ads.count
+]
 - @ads.each do |ad|
   #name
-    %b= ad.name
+    %b= link_to "#{ad.name}", verifications_path(:scope => "ads_by_user", :email => ad.email)
   #email  
     %i= ad.email
+  #ad_title
+    = ad.title
   #ad_content
     = ad.ad_content
     = link_to "Weryfikuj", verify_verification_path(ad), :method => :put 
