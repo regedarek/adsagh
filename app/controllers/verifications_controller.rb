@@ -14,7 +14,7 @@ class VerificationsController < ApplicationController
     @ad.update_attribute :verification_date, Time.now
     @ad.update_attribute :admin_id, current_user.id
     if Ad.unverified_ads.size == 0
-      redirect_to verifications_path, notice: t('ad.verify.succesfully_verified')
+      redirect_to verifications_path
     else
       redirect_to verify_info_verification_path(Ad.unverified_ads.last), notice: t('ad.verify.succesfully_verified')
     end
@@ -28,8 +28,9 @@ class VerificationsController < ApplicationController
   def discard
     @ad = Ad.find(params[:id])
     @discard_info = params[:discard_info]
+    @ad.update_attribute :level, 0
     @ad.send_discard_info(@discard_info)
-    @ad.destroy
+    # @ad.destroy
     redirect_to verifications_path, notice: t('ad.discard.succesfully_dicarded')
   end
 end

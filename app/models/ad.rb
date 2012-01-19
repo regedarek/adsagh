@@ -49,6 +49,7 @@ class Ad < ActiveRecord::Base
     self.advertiser = Advertiser.find_or_create_by_email(:email => ad.email, :name => ad.name, :phone_number => ad.phone_number)
     if ad.token == token
       ad.update_attribute :advertiser_id, self.advertiser.id
+      ad.update_attribute :level, 1
       :succesfully_confirmed_email
     else
       :unsuccesfully_confirmed_email

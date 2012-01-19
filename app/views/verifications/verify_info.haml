@@ -1,2 +1,4 @@
-= @ad.ad_content
+%b= @ad.title
+%br= @ad.ad_content
 = link_to "Weryfikuj", verify_verification_path(@ad)
+= link_to "Odrzuć", discard_info_verification_path(@ad), :method => :put

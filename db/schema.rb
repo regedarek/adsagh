@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120106165549) do
     t.text     "ad_content"
     t.string   "token"
     t.date     "verification_date"
+    t.integer  "level"
     t.integer  "category_id"
     t.integer  "admin_id"
     t.decimal  "price",             :precision => 6, :scale => 2

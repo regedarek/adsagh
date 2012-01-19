@@ -9,9 +9,10 @@ class CreateAds < ActiveRecord::Migration
       t.text :ad_content
       t.string :token
       t.date :verification_date
+      t.integer :level
       t.integer :category_id
       t.integer :admin_id
-      t.decimal :price, :precision => 6, :scale => 2 
+      t.decimal :price, :precision => 6, :scale => 2
       t.integer :display_counter, :default => 0
 
       t.timestamps
