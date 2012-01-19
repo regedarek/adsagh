@@ -1,3 +1,4 @@
+
 = link_to "Ogłoszenia do zweryfikowania", verifications_path(:scope => "unverified_ads")
 [
 = Ad.unverified_ads.count
@@ -10,18 +11,25 @@
 [
 = Ad.unconfirmed_ads.count
 ]
-- @ads.each do |ad|
-  #name
-    %b= link_to "#{ad.name}", verifications_path(:scope => "ads_by_user", :email => ad.email)
-  #email  
-    %i= ad.email
-  #ad_title
-    = ad.title
-  #ad_content
-    = ad.ad_content
-    = link_to "Weryfikuj", verify_verification_path(ad), :method => :put 
-    |
-    = link_to "Odrzuć", discard_info_verification_path(ad), :method => :put
-    |
-    = link_to "Edit", edit_ad_path(ad)
+- if @ads.empty?
   %br
+  brak ogłoszeń do zweryfikowania 
+- else
+  %table.zebra-striped
+    %tr
+      %th ogłoszenie
+      %th name 
+      %th
+      %th
+      %th
+    - @ads.each do |ad|
+      %tr
+        %td.ad
+          #name
+            = link_to "#{ad.name}", verifications_path(:scope => "ads_by_user", :email => ad.email)
+        %td.ad
+          #email
+            = link_to "#{ad.title}", verify_info_verification_path(ad), :method => :put
+        %td= link_to "Weryfikuj", verify_verification_path(ad)
+        %td= link_to "Odrzuć", discard_info_verification_path(ad), :method => :put
+        %td= link_to "Edit", edit_ad_path(ad)

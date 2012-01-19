@@ -4,3 +4,6 @@ ad:
 
 #Change to true for .html in path
 url_with_html: false 
+
+# :sendmail or :letter_opener
+letter_opener: :letter_opener 

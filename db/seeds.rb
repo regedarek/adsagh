@@ -26,7 +26,7 @@ unad3 = Ad.create(
                )
 
 unwad1 = Ad.create(
-								:title => 'Ogłoszenie niezweryfikowane',
+								:title => 'Ogłoszenie niezweryfikowane1',
 								:name => 'Czesio1',
 								:email => 'czesio@agh.pl',
 								:ad_content => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed sapien ut elit bibendum lacinia vel ac neque. Etiam sapien lectus, tristique nec hendrerit id, posuere eget odio. Mauris tempus viverra justo feugiat suscipit.',
@@ -35,7 +35,25 @@ unwad1 = Ad.create(
 								:advertiser_id => 1
                )
 unwad2 = Ad.create(
-								:title => 'Ogłoszenie niezweryfikowane',
+								:title => 'Ogłoszenie niezweryfikowane2',
+								:name => 'Czesio1',
+								:email => 'czesio@agh.pl',
+								:ad_content => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed sapien ut elit bibendum lacinia vel ac neque. Etiam sapien lectus, tristique nec hendrerit id, posuere eget odio. Mauris tempus viverra justo feugiat suscipit.',
+								:price => '12',
+                :category_id => 6,
+								:advertiser_id => 1
+               )
+unwad3 = Ad.create(
+								:title => 'Ogłoszenie niezweryfikowane3',
+								:name => 'Czesio1',
+								:email => 'czesio@agh.pl',
+								:ad_content => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed sapien ut elit bibendum lacinia vel ac neque. Etiam sapien lectus, tristique nec hendrerit id, posuere eget odio. Mauris tempus viverra justo feugiat suscipit.',
+								:price => '12',
+                :category_id => 6,
+								:advertiser_id => 1
+               )
+unwad4 = Ad.create(
+								:title => 'Ogłoszenie niezweryfikowane4',
 								:name => 'Czesio1',
 								:email => 'czesio@agh.pl',
 								:ad_content => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed sapien ut elit bibendum lacinia vel ac neque. Etiam sapien lectus, tristique nec hendrerit id, posuere eget odio. Mauris tempus viverra justo feugiat suscipit.',

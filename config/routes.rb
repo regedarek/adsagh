@@ -12,6 +12,8 @@ Adsagh::Application.routes.draw do
       put 'discard'
       get 'discard'
       put 'discard_info'
+      get 'verify_info'
+      put 'verify_info'
     end
   end
   match "/verifications/:scope" => "verifications#index"
