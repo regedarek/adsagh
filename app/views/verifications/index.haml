@@ -28,7 +28,7 @@
           #name
             = link_to "#{ad.name}", verifications_path(:scope => "ads_by_user", :email => ad.email)
         %td.ad
-          #email
+          #title
             = link_to "#{ad.title}", verify_info_verification_path(ad), :method => :put
         %td= link_to "Weryfikuj", verify_verification_path(ad)
         %td= link_to "Odrzuć", discard_info_verification_path(ad), :method => :put

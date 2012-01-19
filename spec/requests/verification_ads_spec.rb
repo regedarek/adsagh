@@ -19,7 +19,7 @@ describe 'Verification' do
       # page!
       page.should_not have_selector(:name, :text => @ad1.name)
       assert_seen(@ad2.name, :within => :name)
-      assert_seen(@ad2.ad_content, :within => :ad_content)
+      assert_seen(@ad2.title, :within => :title)
       page.should have_selector(:name, :count => 1)
     end
 
@@ -28,7 +28,7 @@ describe 'Verification' do
       page.should_not have_selector(:ad_content, :text => @ad2.ad_content)
       log_in @admin
       assert_seen(@ad2.name, :within => :name)
-      assert_seen(@ad2.ad_content, :within => :ad_content)
+      assert_seen(@ad2.title, :within => :title)
       click_link "Weryfikuj"
       current_path.should eql(verifications_path)
       flash_notice!("Zweryfikowano pomyślnie!")

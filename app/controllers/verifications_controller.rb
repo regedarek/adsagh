@@ -14,7 +14,7 @@ class VerificationsController < ApplicationController
     @ad.update_attribute :verification_date, Time.now
     @ad.update_attribute :admin_id, current_user.id
     if Ad.unverified_ads.size == 0
-      redirect_to verifications_path
+      redirect_to verifications_path, notice: t('ad.verify.succesfully_verified')
     else
       redirect_to verify_info_verification_path(Ad.unverified_ads.last), notice: t('ad.verify.succesfully_verified')
     end
