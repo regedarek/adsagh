@@ -7,6 +7,8 @@ Adsagh::Application.routes.draw do
   resources :categories
   resources :verifications do
     member do
+      get 'fast_verify'
+      put 'fast_verify'
       get 'verify'
       put 'verify'
       put 'discard'
@@ -14,6 +16,8 @@ Adsagh::Application.routes.draw do
       put 'discard_info'
       get 'verify_info'
       put 'verify_info'
+      get 'fast_verify_info'
+      put 'fast_verify_info'
     end
   end
   match "/verifications/:scope" => "verifications#index"

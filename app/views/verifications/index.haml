@@ -1,4 +1,6 @@
-
+- if Ad.unverified_ads.size == 0
+- else
+  = link_to "Szybka Weryfikacja", fast_verify_info_verification_path(Ad.unverified_ads.last), :method => :put
 = link_to "Ogłoszenia do zweryfikowania", verifications_path(:scope => "unverified_ads")
 [
 = Ad.unverified_ads.count
@@ -21,15 +23,13 @@
       %th name 
       %th
       %th
-      %th
     - @ads.each do |ad|
       %tr
-        %td.ad
+        %td
           #name
             = link_to "#{ad.name}", verifications_path(:scope => "ads_by_user", :email => ad.email)
-        %td.ad
+        %td
           #title
             = link_to "#{ad.title}", verify_info_verification_path(ad), :method => :put
-        %td= link_to "Weryfikuj", verify_verification_path(ad)
         %td= link_to "Odrzuć", discard_info_verification_path(ad), :method => :put
         %td= link_to "Edit", edit_ad_path(ad)

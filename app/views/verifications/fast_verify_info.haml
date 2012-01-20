@@ -1,5 +1,5 @@
 %b= @ad.title
 %br= @ad.ad_content
-= link_to "Weryfikuj", verify_verification_path(@ad)
+= link_to "Weryfikuj", fast_verify_verification_path(Ad.unverified_ads.last), :method => :put
 -# = link_to "Odrzuć", discard_info_verification_path(@ad), :method => :put
 = render :partial => 'discard_form'

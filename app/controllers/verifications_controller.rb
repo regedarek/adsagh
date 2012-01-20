@@ -8,16 +8,25 @@ class VerificationsController < ApplicationController
   def verify_info
     @ad = Ad.find(params[:id])
   end
-
-  def verify
+  def fast_verify_info
+    @ad = Ad.find(params[:id])
+  end
+  def fast_verify
     @ad = Ad.find(params[:id])
     @ad.update_attribute :verification_date, Time.now
     @ad.update_attribute :admin_id, current_user.id
     if Ad.unverified_ads.size == 0
       redirect_to verifications_path
     else
-      redirect_to verify_info_verification_path(Ad.unverified_ads.last), notice: t('ad.verify.succesfully_verified')
+    redirect_to fast_verify_info_verification_path(Ad.unverified_ads.last)
     end
+    @ad.send_edit_link
+  end
+  def verify
+    @ad = Ad.find(params[:id])
+    @ad.update_attribute :verification_date, Time.now
+    @ad.update_attribute :admin_id, current_user.id
+    redirect_to verifications_path
     @ad.send_edit_link
   end
 
@@ -30,7 +39,7 @@ class VerificationsController < ApplicationController
     @discard_info = params[:discard_info]
     @ad.update_attribute :level, 0
     @ad.send_discard_info(@discard_info)
-    # @ad.destroy
+    @ad.destroy
     redirect_to verifications_path, notice: t('ad.discard.succesfully_dicarded')
   end
 end
