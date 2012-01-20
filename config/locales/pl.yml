@@ -54,7 +54,7 @@ pl:
     verify:
       succesfully_verified: "Zweryfikowano pomyślnie!"
     discard:
-      succesfully_dicarded: "Odrzucono ogłoszenie!"
+      succesfully_discarded: "Odrzucono ogłoszenie!"
 
   errors:
     format: "%{attribute} %{message}"      

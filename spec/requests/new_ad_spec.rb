@@ -8,10 +8,8 @@ describe "New ad specs" do
       Category.sham!
       visit root_path
       page.should have_selector("h1", :text => "tablica")
-      page.should have_selector(".ad", :count => 3)
-      @ads.each do |ad|
-        page.should have_css(".ad", :text => ad.title )
-      end
+      page.should have_content(@ads.first.title)
+      page.should have_content(@ads.last.title)
     end
 
     it 'goes to new ad path' do

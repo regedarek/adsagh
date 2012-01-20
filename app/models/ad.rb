@@ -72,6 +72,22 @@ class Ad < ActiveRecord::Base
     end
   end
 
+  # def self.last_unverified
+  #   self.unverified_ads.last
+  # end
+
+  def verify!(admin_id)
+    self.update_attribute :verification_date, Time.now
+    self.update_attribute :admin_id, admin_id
+    self.send_edit_link
+  end
+
+  def discard!(discard_info)
+    self.update_attribute :level, 0
+    self.send_discard_info(discard_info)
+    self.destroy
+  end
+
   # SEO FRIENDLY :)
   def to_param
     "#{id}-#{title.parameterize}"

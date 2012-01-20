@@ -29,6 +29,7 @@ describe 'Verification' do
       log_in @admin
       assert_seen(@ad2.name, :within => :name)
       assert_seen(@ad2.title, :within => :title)
+      click_link @ad2.title
       click_link "Weryfikuj"
       current_path.should eql(verifications_path)
       flash_notice!("Zweryfikowano pomyślnie!")
