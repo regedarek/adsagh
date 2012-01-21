@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106165549) do
+ActiveRecord::Schema.define(:version => 20120121020423) do
 
   create_table "admins", :force => true do |t|
     t.string   "username",         :null => false
@@ -66,5 +66,14 @@ ActiveRecord::Schema.define(:version => 20120106165549) do
   end
 
   add_index "photos", ["attachable_id"], :name => "index_photos_on_attachable_id"
+
+  create_table "searches", :force => true do |t|
+    t.string   "keywords"
+    t.integer  "category_id"
+    t.decimal  "min_price"
+    t.decimal  "max_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

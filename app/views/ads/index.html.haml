@@ -9,18 +9,21 @@
   %br
   = link_to "Dowiedz się więcej", root_path, :class=>"btn primary large pull-right"
 
-%h2 Promowane ogłoszenia
-- if @ads.empty?
-  brak ogłoszeń w bazie
-- else
-  %table.zebra-striped
-    %tr
-      %th ogłoszenie
-      %th popularność
-    - @ads.each do |ad|
-      %tr
-        %td=link_to ad.title, short_ad_path(ad)
-        %td=ad.display_counter
+  = render @ads
+-# przenieś do _ad.html.haml 
+
+-# %h2 Promowane ogłoszenia
+-# - if @ads.empty?
+-#   brak ogłoszeń w bazie
+-# - else
+-#   %table.zebra-striped
+-#     %tr
+-#       %th ogłoszenie
+-#       %th popularność
+-#     - @ads.each do |ad|
+-#       %tr
+-#         %td=link_to ad.title, short_ad_path(ad)
+-#         %td=ad.display_counter
 
 - content_for :content_menu do
   = link_to "Dodaj ogłoszenie", new_ad_path

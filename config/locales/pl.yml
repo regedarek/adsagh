@@ -1,4 +1,13 @@
 pl:  
+  number:
+    currency:
+        format:
+            format: "%n %u"
+            unit: "zł"
+            separator: "."
+            delimiter: ","
+            precision: 2
+
   simple_form:
     labels:
       name: "Nazwa ogłoszeniodawcy"

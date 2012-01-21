@@ -1,0 +1,9 @@
+%h1 Wyszukiwanie
+
+#search_form
+  = simple_form_for @search do |f|
+    = f.input :keywords
+    = f.input :category_id, :collection => Category.all(:order => 'name'), include_blank: true
+    = f.input :min_price, size: 10
+    = f.input :max_price, size: 10
+    = f.button :submit, 'Wyszukaj'

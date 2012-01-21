@@ -1,3 +1,4 @@
+= link_to "Zaawansowane wyszukiwanie", new_search_path
 - if current_adv
   Witamy,
   = current_adv.name
@@ -5,7 +6,6 @@
 - else
   = link_to "Google", "http://localhost:3000/auth/google_oauth2"
   = link_to "Facebook", "http://0.0.0.0:3000/auth/facebook"
-  
 - if logged_in?
   Zalogowany jako
   = current_user.username

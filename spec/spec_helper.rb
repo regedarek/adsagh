@@ -13,14 +13,12 @@ Spork.prefork do
     config.mock_with :rspec
     config.use_transactional_fixtures = true
     config.treat_symbols_as_metadata_keys_with_true_values = true
-    config.filter_run :focus => true
-    config.run_all_when_everything_filtered = true
+    # config.filter_run :focus => true
+    # config.run_all_when_everything_filtered = true
     config.include(MailerMacros)
     config.before(:each) { reset_email }
     DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
-    config.before(:each) do
-    end
+    # DatabaseCleaner.clean
     config.after(:all) do
       DatabaseCleaner.clean
     end
