@@ -58,6 +58,7 @@ class Ad < ActiveRecord::Base
       :succesfully_confirmed_email
     else
       :unsuccesfully_confirmed_email
+
     end
   end
 

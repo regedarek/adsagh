@@ -6,6 +6,7 @@ class VerificationsController < ApplicationController
 
   def index
     @ads = Ad.with_some_scope(params[:scope], params[:email])
+    @last_unverified_ad = Ad.last_unverified
   end
 
   def verify_info
@@ -34,6 +35,7 @@ class VerificationsController < ApplicationController
 
   def load_ad
     @ad = Ad.find(params[:id])
+    @last_unverified_ad = Ad.last_unverified
   end
 
   def verify_ad
