@@ -1,5 +1,5 @@
-- unless @ads.unverified_ads.empty?
-  = link_to "Szybka Weryfikacja", fast_verify_info_verification_path(@ads.unverified_ads.last), :method => :put
+- unless @ads.unverified_empty?
+  = link_to "Szybka Weryfikacja", fast_verify_info_verification_path(@ads.last_unverified), :method => :put
 = link_to "Ogłoszenia do zweryfikowania", verifications_path(:scope => "unverified_ads")
 [
 -# = Ad.unverified_ads.count

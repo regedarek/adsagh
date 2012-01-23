@@ -45,8 +45,8 @@ group :test do
   gem 'libnotify'
   gem 'rb-inotify'
   gem 'launchy'
-  gem 'spork', ">0.9.0.rc"
-  gem 'guard', '>= 0.9.4'
+  gem 'spork', '~> 1.0rc'
+  gem 'guard', '>= 1.0.0'
   gem "guard-rspec"
   gem 'guard-spork'
   gem 'sham'

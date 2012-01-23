@@ -73,7 +73,7 @@ GEM
       rack (>= 1.1.0, < 2)
     ffi (1.0.11)
     gem_plugin (0.2.3)
-    guard (0.10.0)
+    guard (1.0.0)
       ffi (>= 0.5.0)
       thor (~> 0.14.6)
     guard-rspec (0.6.0)
@@ -195,7 +195,7 @@ GEM
       oauth (~> 0.4.4)
       oauth2 (~> 0.5.1)
       oauth2 (~> 0.5.1)
-    spork (0.9.0.rc9)
+    spork (1.0.0rc0)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -225,7 +225,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.1.1)
   database_cleaner
-  guard (>= 0.9.4)
+  guard (>= 1.0.0)
   guard-rspec
   guard-spork
   haml-rails
@@ -247,7 +247,7 @@ DEPENDENCIES
   sham
   simple_form
   sorcery
-  spork (> 0.9.0.rc)
+  spork (~> 1.0rc)
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)

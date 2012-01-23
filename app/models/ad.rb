@@ -44,6 +44,11 @@ class Ad < ActiveRecord::Base
     end
   end
 
+  def update!(params_ad)
+    self.update_attributes(params_ad)
+    self.update_attribute :verification_date, nil
+  end
+
   def confirm_by(id, token)
     ad = Ad.find(id)
     self.advertiser = Advertiser.find_or_create_by_email(:email => ad.email, :name => ad.name, :phone_number => ad.phone_number)
@@ -72,9 +77,13 @@ class Ad < ActiveRecord::Base
     end
   end
 
-  # def self.last_unverified
-  #   self.unverified_ads.last
-  # end
+  def self.last_unverified
+    self.unverified_ads.last
+  end
+
+  def self.unverified_empty?
+    self.unverified_ads.empty?
+  end
 
   def verify!(admin_id)
     self.update_attribute :verification_date, Time.now

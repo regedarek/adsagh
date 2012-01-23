@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class AdsController < ApplicationController
   before_filter :categories
+  before_filter :load_ad, :only => [:edit, :update, :show, :confirm]
 
   def index
     @ads = Ad.where("advertiser_id IS NOT NULL AND verification_date IS NOT NULL")
@@ -16,15 +17,13 @@ class AdsController < ApplicationController
       cookies.permanent[:email] = [params[:ad][:email]]
       cookies.permanent[:name] = [params[:ad][:name]]
       cookies.permanent[:phone_number] = [params[:ad][:phone_number]]
-      flash.notice = t("ad.create.#{msg}")
-      redirect_to root_path
+      redirect_to root_path, notice: t("ad.create.#{msg}")
     else
       render :new
     end
   end
 
   def edit
-    @ad = Ad.find(params[:id])
     if @ad.token = params[:token] || logged_in?
     else
       redirect_to root_path, alert: t('ad.edit.wrong_token')
@@ -32,9 +31,7 @@ class AdsController < ApplicationController
   end
 
   def update
-    @ad = Ad.find(params[:id])
-    @ad.update_attributes(params[:ad])
-    @ad.update_attributes(:verification_date => nil)
+    @ad.update!(params[:ad])
     if logged_in?
       redirect_to verifications_path, notice: t('ad.update')
     else
@@ -44,7 +41,6 @@ class AdsController < ApplicationController
 
   def show
     begin
-      @ad = Ad.find(params[:id])
       @ad.update_attribute 'display_counter', @ad.display_counter + 1
     rescue ActiveRecord::RecordNotFound
       flash.alert=t("ad.not_found")
@@ -62,7 +58,6 @@ class AdsController < ApplicationController
   end
 
   def signout_advertiser
-    # session[:adv_email] = session[:adv_name] = session[:adv_phone] = nil
     cookies.delete :email
     cookies.delete :name
     cookies.delete :phone_number
@@ -71,7 +66,6 @@ class AdsController < ApplicationController
   end
 
   def confirm
-    @ad = Ad.find(params[:id])
     if msg = @ad.confirm_by(params[:id], params[:token])
       redirect_to root_path, notice: t("ad.confirm.#{msg}")
     end
@@ -79,7 +73,11 @@ class AdsController < ApplicationController
 end
 
 private
-def categories
+  def load_ad
+    @ad = Ad.find(params[:id])
+  end
+
+  def categories
     @roots = Category.where("ancestry IS NULL").order(:name)
     @categories = Category.arrange(:order=>:name)
-end
+  end

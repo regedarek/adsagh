@@ -15,7 +15,7 @@ class VerificationsController < ApplicationController
   end
 
   def fast_verify
-    redirect_to (Ad.unverified_ads.empty? ? verifications_path : fast_verify_info_verification_path(Ad.unverified_ads.last))
+    redirect_to (Ad.unverified_empty? ? verifications_path : fast_verify_info_verification_path(Ad.last_unverified))
   end
 
   def verify
