@@ -7,6 +7,9 @@ class VerificationsController < ApplicationController
   def index
     @ads = Ad.with_some_scope(params[:scope], params[:email])
     @last_unverified_ad = Ad.last_unverified
+    @unverified_count = Ad.unverified_ads.count
+    @unconfirmed_ads = Ad.unconfirmed_ads
+    @confirmed_count = Ad.confirmed_ads.count
   end
 
   def verify_info
