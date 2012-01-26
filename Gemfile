@@ -50,6 +50,7 @@ group :test do
   gem "guard-rspec"
   gem 'guard-spork'
   gem 'sham'
+  gem 'hpricot'
 end
 
 

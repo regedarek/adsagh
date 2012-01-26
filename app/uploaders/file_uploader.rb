@@ -31,23 +31,23 @@ class FileUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   process :resize_to_limit => [500, 500]
   process :convert => 'png'
-  
+
   version :medium do
     process :resize_to_limit => [250, 250]
     process :convert => 'png'
-    def full_filename (for_file = model.file) 
-      "#{model.id}_medium.png" 
+    def full_filename (for_file = model.file)
+      "thumb_#{model.id}_medium.png"
     end
   end
 
   version :small do
     process :resize_to_limit => [50, 50]
     process :convert => 'png'
-    def full_filename (for_file = model.file) 
-      "#{model.id}_small.png" 
+    def full_filename (for_file = model.file)
+      "thumb_#{model.id}_small.png"
     end
-  end 
-  
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
@@ -57,6 +57,6 @@ class FileUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "#{model.id}_large.png" if original_filename
+    "#{model.id}_original.png" if original_filename
   end
 end

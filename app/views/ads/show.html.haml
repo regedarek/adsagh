@@ -1,28 +1,27 @@
 #title
-	%h1
-		= @ad.title
+  %h1
+    = @ad.title
 #ad_content
-	%b Treść ogłoszenia:
-	= @ad.ad_content
+  %b Treść ogłoszenia:
+  = @ad.ad_content
 %br
 #name
-	%b Imię i nazwisko:
-	= @ad.name
+  %b Imię i nazwisko:
+  = @ad.name
 %br
 #email
-	%b Email:
-	= @ad.email
+  %b Email:
+  = @ad.email
 %br
 #price
-	%b Cena:
-	= @ad.price
+  %b Cena:
+  = @ad.price
 %br
 - if @ad.photos.present?
-	#photos
-		= image_tag @ad.photos.first.file
+  - @ad.photos.each do |p|
+    #photos
+      = image_tag("../../photos/#{@ad.id}/thumb_#{p.id}_small.png")
+  %b Liczba wyświetleń:
+  = @ad.display_counter
 %br
-#display_counter
-	%b Liczba wyświetleń:
-	= @ad.display_counter
-%br
-	= link_to "wróć", ads_path
+  = link_to "wróć", ads_path
