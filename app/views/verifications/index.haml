@@ -21,7 +21,6 @@
       %th ogłoszenie
       %th name
       %th
-      %th
     - @ads.each do |ad|
       %tr
         %td
@@ -30,5 +29,4 @@
         %td
           #title
             = link_to "#{ad.title}", verify_info_verification_path(ad), :method => :put
-        %td= link_to "Odrzuć", discard_info_verification_path(ad), :method => :put
         %td= link_to "Edit", edit_ad_path(ad)
