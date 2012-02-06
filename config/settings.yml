@@ -3,7 +3,12 @@ ad:
   min_name_size: 3
 
 #Change to true for .html in path
-url_with_html: false 
+url_with_html: false
 
 # :sendmail or :letter_opener
-letter_opener: :letter_opener 
+letter_opener: :letter_opener
+
+auto_verification_times: 3
+prolongation_days: 14
+delete_photos_days: 30
+send_before_deleted_days: 3

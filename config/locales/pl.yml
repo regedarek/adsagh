@@ -51,6 +51,7 @@ pl:
     create:
       awaiting_verification: "Ogłoszenie przekazane do weryfikacji!"
       awaiting_email_confirmation: "Ogłoszenie przekazane do potwierdzenia emaila!"
+      succesfully_confirmed_and_verified_email: "Ogłoszenie potwierdzone i zweryfikowane"
     edit:
       wrong_token: "Musisz posiadać token!"
     update: "Zaktualizowano ogłoszenie."

@@ -38,7 +38,12 @@ class Ad < ActiveRecord::Base
     self.advertiser = Advertiser.find_by_email(email)
     return false unless save
     if self.advertiser
+      if self.advertiser.ads.verified_ads.size >= Settings.auto_verification_times
+        self.verify!(0)
+        :succesfully_confirmed_and_verified_email
+      else
       :awaiting_verification
+      end
     else
       AdMailer.ad_token(self).deliver
       :awaiting_email_confirmation
@@ -99,6 +104,7 @@ class Ad < ActiveRecord::Base
 
   def finish
     self.update_attribute :level, 1
+    # TODO send_finish_info
   end
 
   # SEO FRIENDLY :)
