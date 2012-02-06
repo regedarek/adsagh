@@ -1,4 +1,4 @@
-pl:  
+pl:
   number:
     currency:
         format:
@@ -62,11 +62,12 @@ pl:
       succesfully_destroy_session: "Wylogowano"
     verify:
       succesfully_verified: "Zweryfikowano pomyślnie!"
+    finish: "Zakończono ogłoszenie"
     discard:
       succesfully_discarded: "Odrzucono ogłoszenie!"
 
   errors:
-    format: "%{attribute} %{message}"      
+    format: "%{attribute} %{message}"
     messages: &errors_messages
       inclusion: "nie znajduje się na liście dopuszczalnych wartości"
       exclusion: "jest zarezerwowane"
@@ -88,13 +89,13 @@ pl:
       odd: "musi być nieparzyste"
       even: "musi być parzyste"
       taken: "zostało już zajęte"
-      record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"        
-      
-  activerecord:    
+      record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"
+
+  activerecord:
    models:
      ad: "ogłoszenie"
-    
+
   helpers:
-    submit:      
+    submit:
       create: "Dodaj %{model}"
       update: "Zapisz zmiany"

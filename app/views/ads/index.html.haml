@@ -1,16 +1,16 @@
 / TO jeszcze do dopracowania
 .hero-unit
-  %h2 
-    Witaj w serwisie 
+  %h2
+    Witaj w serwisie
   %h1
     :erb
       tablica.in<span class="ternetowa">ternetowa</span>
-  %h2 Ogłoszenia dedykowane społecznością lokalnym.
+  %h2 Ogłoszenia dedykowane społecznościom lokalnym.
   %br
   = link_to "Dowiedz się więcej", root_path, :class=>"btn primary large pull-right"
 
   = render @ads
--# przenieś do _ad.html.haml 
+-# przenieś do _ad.html.haml
 
 -# %h2 Promowane ogłoszenia
 -# - if @ads.empty?

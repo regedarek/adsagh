@@ -1,10 +1,10 @@
 # encoding: UTF-8
 class AdsController < ApplicationController
   before_filter :categories
-  before_filter :load_ad, :only => [:edit, :update, :show, :confirm]
+  before_filter :load_ad, :only => [:edit, :update, :finish, :show, :confirm]
 
   def index
-    @ads = Ad.where("advertiser_id IS NOT NULL AND verification_date IS NOT NULL")
+    @ads = Ad.verified_ads
   end
 
   def new
@@ -43,7 +43,7 @@ class AdsController < ApplicationController
     begin
       @ad.update_attribute 'display_counter', @ad.display_counter + 1
     rescue ActiveRecord::RecordNotFound
-      flash.alert=t("ad.not_found")
+      flash.alert = t("ad.not_found")
       redirect_to ads_path
     end
   end
@@ -68,6 +68,15 @@ class AdsController < ApplicationController
   def confirm
     if msg = @ad.confirm_by(params[:id], params[:token])
       redirect_to root_path, notice: t("ad.confirm.#{msg}")
+    end
+  end
+
+  def finish
+    if @ad.token = params[:token] || logged_in?
+      @ad.finish
+      redirect_to root_path, alert: t('ad.finish')
+    else
+      redirect_to root_path, alert: t('ad.edit.wrong_token')
     end
   end
 end

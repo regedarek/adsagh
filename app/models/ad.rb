@@ -5,6 +5,7 @@ class Ad < ActiveRecord::Base
   scope :confirmed_ads,  :conditions => ["advertiser_id IS NOT NULL"]
   scope :unconfirmed_ads,  :conditions => ["advertiser_id IS NULL"]
   scope :unverified_ads,  :conditions => ["advertiser_id IS NOT NULL AND verification_date IS NULL"]
+  scope :verified_ads,  :conditions => ["advertiser_id IS NOT NULL AND verification_date IS NOT NULL AND level >= ?", 2]
   scope :ads_by_user, lambda { |email| { :conditions => ["email = ?", email] } }
 
   attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter, :photos_attributes
@@ -54,11 +55,9 @@ class Ad < ActiveRecord::Base
     self.advertiser = Advertiser.find_or_create_by_email(:email => ad.email, :name => ad.name, :phone_number => ad.phone_number)
     if ad.token == token
       ad.update_attribute :advertiser_id, self.advertiser.id
-      ad.update_attribute :level, 1
       :succesfully_confirmed_email
     else
       :unsuccesfully_confirmed_email
-
     end
   end
 
@@ -89,13 +88,17 @@ class Ad < ActiveRecord::Base
   def verify!(admin_id)
     self.update_attribute :verification_date, Time.now
     self.update_attribute :admin_id, admin_id
+    self.update_attribute :level, 2
     self.send_edit_link
   end
 
   def discard!(discard_info)
     self.update_attribute :level, 0
     self.send_discard_info(discard_info)
-    self.destroy
+  end
+
+  def finish
+    self.update_attribute :level, 1
   end
 
   # SEO FRIENDLY :)

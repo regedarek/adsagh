@@ -24,4 +24,7 @@
   %b Liczba wyświetleń:
   = @ad.display_counter
 %br
-  = link_to "wróć", ads_path
+- if current_adv or logged_in?
+  = link_to "Zakończ", finish_ad_path(@ad), :method => :put
+  |
+= link_to "wróć", ads_path

@@ -1,12 +1,9 @@
 - unless @unconfirmed_ads.empty?
   = link_to "Szybka Weryfikacja", fast_verify_info_verification_path(@last_unverified_ad), :method => :put
+|
 = link_to "Ogłoszenia do zweryfikowania", verifications_path(:scope => "unverified_ads")
 [
 = @unverified_count
-]
-= link_to "Ogłoszenia potwierdzone", verifications_path(:scope => "confirmed_ads")
-[
-= @confirmed_count
 ]
 = link_to "Ogłoszenia niepotwierdzone", verifications_path(:scope => "unconfirmed_ads")
 [
@@ -20,7 +17,6 @@
     %tr
       %th ogłoszenie
       %th name
-      %th
     - @ads.each do |ad|
       %tr
         %td
@@ -29,4 +25,3 @@
         %td
           #title
             = link_to "#{ad.title}", verify_info_verification_path(ad), :method => :put
-        %td= link_to "Edit", edit_ad_path(ad)

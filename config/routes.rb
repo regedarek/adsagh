@@ -25,6 +25,7 @@ Adsagh::Application.routes.draw do
   resources :ads do
     member do
       get 'confirm'
+      put 'finish'
     end
   end
 
