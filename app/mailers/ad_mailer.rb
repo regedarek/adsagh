@@ -9,12 +9,17 @@ class AdMailer < ActionMailer::Base
   #
   def ad_token(ad)
     @ad = ad
-    mail :to => ad.email, :subject => "token" 
+    mail :to => ad.email, :subject => "token"
   end
 
   def send_edit_link(ad)
     @ad = ad
-    mail :to => ad.email, :subject => "Edytuj ogłoszenie" 
+    mail :to => ad.email, :subject => "Edytuj ogłoszenie"
+  end
+
+  def send_finish_info(ad)
+    @ad = ad
+    mail :to => ad.email, :subject => "Ogłoszenie zostanie zakończone"
   end
 
   def why_discard(ad, discard_info)

@@ -1,7 +1,7 @@
 - title "Dodaj ogłoszenie"
 .ads
 
-  = simple_nested_form_for @ad, :html=>{:multipart => true } do |f|
+  = simple_form_for @ad, :html=>{:multipart => true } do |f|
     =f.input :title
     =f.input :price
     =f.input :category_id
@@ -12,8 +12,8 @@
       -# Email:
       -# = session[:adv_email]
       = f.input :name, :as => :hidden, :input_html => { :value => session[:adv_name] }
-      = f.input :email, :as => :hidden, :input_html => { :value => session[:adv_email] } 
-      = f.input :email, :as => :hidden, :input_html => { :value => session[:adv_email] } 
+      = f.input :email, :as => :hidden, :input_html => { :value => session[:adv_email] }
+      = f.input :email, :as => :hidden, :input_html => { :value => session[:adv_email] }
 
     - else
       = f.input :name, :input_html => { :value => cookies[:name] }
@@ -21,18 +21,13 @@
     = f.input :phone_number, :input_html => { :value => cookies[:phone_number] }
     =f.input :ad_content
 
-    = f.fields_for :photos do |photo_form|
-      = photo_form.label :file
-      %br/
-      = photo_form.file_field :file
-      = photo_form.link_to_remove "Remove this attachment"
-    = f.link_to_add "Add photo", :photos
-
-
+    = f.fields_for :photos do |p|
+      = p.file_field :photo
+      %br
     .submit
       =f.button :submit
 
-      
+
   - content_for :content_menu do
     = link_to t(:back), ads_path
 

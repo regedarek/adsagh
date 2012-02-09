@@ -1,7 +1,13 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :file
+  belongs_to :ad
+  has_attached_file :photo,
+    :styles => { :original => "640x480>", :thumb => "100x100"},
+    :url => "/:attachment/:ad_id/:id_:style.png"
 
-  belongs_to :attachable, :polymorphic => true
-  mount_uploader :file, FileUploader
+  validates_attachment_size :photo, :less_than => 4.megabytes
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
+  Paperclip.interpolates :ad_id do |attachment, style|
+    attachment.instance.ad.id
+  end
 end

@@ -16,9 +16,7 @@ gem 'ancestry'
 gem "rails_config"
 
 # Gemy do zdjęć
-gem "carrierwave"
-gem 'nested_form', :git => "git://github.com/ryanb/nested_form.git"
-gem 'rmagick'
+gem "paperclip", "~> 2.0"
 
 # Gemy uwierzytelniania
 gem 'sorcery'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121020423) do
+ActiveRecord::Schema.define(:version => 20120209110946) do
 
   create_table "admins", :force => true do |t|
     t.string   "username",         :null => false
@@ -58,14 +58,12 @@ ActiveRecord::Schema.define(:version => 20120121020423) do
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
 
   create_table "photos", :force => true do |t|
-    t.string   "file"
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "ad_id"
   end
-
-  add_index "photos", ["attachable_id"], :name => "index_photos_on_attachable_id"
 
   create_table "searches", :force => true do |t|
     t.string   "keywords"

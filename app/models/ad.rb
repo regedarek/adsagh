@@ -1,6 +1,7 @@
 class Ad < ActiveRecord::Base
   belongs_to :advertiser
   belongs_to :admin
+  has_many :photos
 
   scope :confirmed_ads,  :conditions => ["advertiser_id IS NOT NULL"]
   scope :unconfirmed_ads,  :conditions => ["advertiser_id IS NULL"]
@@ -9,9 +10,9 @@ class Ad < ActiveRecord::Base
   scope :ads_by_user, lambda { |email| { :conditions => ["email = ?", email] } }
 
   attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter, :photos_attributes
+  accepts_nested_attributes_for :photos, :allow_destroy => true
 
-  has_many :photos, :as => :attachable
-  accepts_nested_attributes_for :photos
+
 
   validates_presence_of :title, :name, :email, :ad_content, :price, :category_id
   validates_length_of :name, :within => Settings.ad.min_name_size..Settings.ad.max_name_size
@@ -26,6 +27,10 @@ class Ad < ActiveRecord::Base
 
   def send_discard_info(discard_info)
     AdMailer.why_discard(self, discard_info).deliver
+  end
+
+  def send_finish_info
+    AdMailer.send_finish_info(self).deliver
   end
 
   def generate_token(column)
@@ -104,14 +109,18 @@ class Ad < ActiveRecord::Base
 
   def finish
     self.update_attribute :level, 1
-    # TODO send_finish_info
+    self.send_finish_info
+  end
+
+  def self.remove_old_photos
+    self.where(["updated_at < ?", 30.days.ago]).each { |ad| ad.photos.destroy_all }
   end
 
   # SEO FRIENDLY :)
   def to_param
     "#{id}-#{title.parameterize}"
   end
-
+# rset alternate=spec/model/ad_spec.rb
 end
 
 

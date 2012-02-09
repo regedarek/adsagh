@@ -22,10 +22,9 @@ Category	app/models/category.rb	/^class Category < ActiveRecord::Base$/;"	c
 CreateAds	db/migrate/20111205171057_create_ads.rb	/^class CreateAds < ActiveRecord::Migration$/;"	c
 CreateAdvertisers	db/migrate/20111212194516_create_advertisers.rb	/^class CreateAdvertisers < ActiveRecord::Migration$/;"	c
 CreateCategories	db/migrate/20111213200544_create_categories.rb	/^class CreateCategories < ActiveRecord::Migration$/;"	c
-CreatePhotos	db/migrate/20120106165549_create_photos.rb	/^class CreatePhotos < ActiveRecord::Migration$/;"	c
+CreatePhotos	db/migrate/20120209110946_create_photos.rb	/^class CreatePhotos < ActiveRecord::Migration$/;"	c
 CreateSearches	db/migrate/20120121020423_create_searches.rb	/^class CreateSearches < ActiveRecord::Migration$/;"	c
 ErrorMessagesHelper	app/helpers/error_messages_helper.rb	/^module ErrorMessagesHelper$/;"	m
-FileUploader	app/uploaders/file_uploader.rb	/^class FileUploader < CarrierWave::Uploader::Base$/;"	c
 FormBuilderAdditions	app/helpers/error_messages_helper.rb	/^  module FormBuilderAdditions$/;"	m
 LayoutHelper	app/helpers/layout_helper.rb	/^module LayoutHelper$/;"	m
 MailerMacros	spec/support/mailer_macros.rb	/^ module MailerMacros$/;"	m
@@ -47,8 +46,8 @@ categories	app/controllers/ads_controller.rb	/^  def categories$/;"	f
 change	db/migrate/20111205171057_create_ads.rb	/^  def change$/;"	f	class:CreateAds
 change	db/migrate/20111212194516_create_advertisers.rb	/^  def change$/;"	f	class:CreateAdvertisers
 change	db/migrate/20111213210641_add_ancestry_to_categories.rb	/^  def change$/;"	f	class:AddAncestryToCategories
-change	db/migrate/20120106165549_create_photos.rb	/^  def change$/;"	f	class:CreatePhotos
 change	db/migrate/20120121020423_create_searches.rb	/^  def change$/;"	f	class:CreateSearches
+change	db/migrate/20120209110946_create_photos.rb	/^  def change$/;"	f	class:CreatePhotos
 confirm	app/controllers/ads_controller.rb	/^  def confirm$/;"	f	class:AdsController
 confirm_by	app/models/ad.rb	/^  def confirm_by(id, token)$/;"	f	class:Ad
 convert_number_column_value_with_comma_separator	config/initializers/comma_as_decimal_separator.rb	/^  def convert_number_column_value_with_comma_separator(value)$/;"	f
@@ -71,14 +70,13 @@ edit	app/controllers/ads_controller.rb	/^  def edit$/;"	f	class:AdsController
 edit	app/controllers/categories_controller.rb	/^  def edit$/;"	f	class:CategoriesController
 error_messages	app/helpers/error_messages_helper.rb	/^    def error_messages(options = {})$/;"	f	class:FormBuilderAdditions
 error_messages_for	app/helpers/error_messages_helper.rb	/^  def error_messages_for(*objects)$/;"	f	class:ErrorMessagesHelper
-extension_white_list	app/uploaders/file_uploader.rb	/^  def extension_white_list$/;"	f	class:FileUploader
 fast_verify	app/controllers/verifications_controller.rb	/^  def fast_verify$/;"	f	class:VerificationsController
 fast_verify_info	app/controllers/verifications_controller.rb	/^  def fast_verify_info$/;"	f	class:VerificationsController
-filename	app/uploaders/file_uploader.rb	/^  def filename$/;"	f	class:FileUploader
 find_ads	app/models/search.rb	/^  def find_ads$/;"	f	class:Search
+finish	app/controllers/ads_controller.rb	/^  def finish$/;"	f	class:AdsController
+finish	app/models/ad.rb	/^  def finish$/;"	f	class:Ad
 flash_alert!	spec/support/capybara_ext.rb	/^  def flash_alert!(text)$/;"	f	class:CapybaraExt
 flash_notice!	spec/support/capybara_ext.rb	/^  def flash_notice!(text)$/;"	f
-full_filename	app/uploaders/file_uploader.rb	/^    def full_filename (for_file = model.file) $/;"	f	class:FileUploader
 generate_token	app/models/ad.rb	/^  def generate_token(column)$/;"	f	class:Ad
 index	app/controllers/ads_controller.rb	/^  def index$/;"	f	class:AdsController
 index	app/controllers/categories_controller.rb	/^  def index$/;"	f	class:CategoriesController
@@ -105,17 +103,19 @@ not_authenticated	app/controllers/application_controller.rb	/^  def not_authenti
 number_field	config/initializers/number_field.rb	/^  def number_field(field, options = {})$/;"	f
 page!	spec/support/capybara_ext.rb	/^  def page!$/;"	f
 page!	spec/support/helpers.rb	/^def page!$/;"	f
+remove_old_photos	app/models/ad.rb	/^  def self.remove_old_photos$/;"	F	class:Ad
 reset_email	spec/support/mailer_macros.rb	/^  	def reset_email$/;"	f	class:MailerMacros
 resolve_layout	app/controllers/categories_controller.rb	/^def resolve_layout$/;"	f
 selector_for	spec/support/capybara_ext.rb	/^  def selector_for(identifier)$/;"	f
 send_discard_info	app/models/ad.rb	/^  def send_discard_info(discard_info)$/;"	f	class:Ad
 send_edit_link	app/mailers/ad_mailer.rb	/^  def send_edit_link(ad)$/;"	f	class:AdMailer
 send_edit_link	app/models/ad.rb	/^  def send_edit_link$/;"	f	class:Ad
+send_finish_info	app/mailers/ad_mailer.rb	/^  def send_finish_info(ad)$/;"	f	class:AdMailer
+send_finish_info	app/models/ad.rb	/^  def send_finish_info$/;"	f	class:Ad
 show	app/controllers/ads_controller.rb	/^  def show$/;"	f	class:AdsController
 show	app/controllers/searches_controller.rb	/^  def show$/;"	f	class:SearchesController
 show_title?	app/helpers/layout_helper.rb	/^  def show_title?$/;"	f	class:LayoutHelper
 signout_advertiser	app/controllers/ads_controller.rb	/^  def signout_advertiser$/;"	f	class:AdsController
-store_dir	app/uploaders/file_uploader.rb	/^  def store_dir$/;"	f	class:FileUploader
 stylesheet	app/helpers/layout_helper.rb	/^  def stylesheet(*args)$/;"	f	class:LayoutHelper
 title	app/helpers/layout_helper.rb	/^  def title(page_title, show_title = true)$/;"	f	class:LayoutHelper
 to_param	app/models/ad.rb	/^  def to_param$/;"	f	class:Ad

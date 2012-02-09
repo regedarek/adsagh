@@ -9,6 +9,7 @@ class AdsController < ApplicationController
 
   def new
     @ad = Ad.new
+    3.times { @ad.photos.build }
   end
 
   def create
@@ -25,6 +26,7 @@ class AdsController < ApplicationController
 
   def edit
     if @ad.token = params[:token] || logged_in?
+      3.times { @ad.photos.build }
     else
       redirect_to root_path, alert: t('ad.edit.wrong_token')
     end

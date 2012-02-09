@@ -68,6 +68,13 @@ describe Ad do
     last_email.to.should include(ad.email)
   end
 
+  it "should delivers email with finish info" do
+    ad.send_finish_info
+    last_email.to.should include(ad.email)
+    last_email.subject.should include("zakończone")
+    last_email.body.should include("za 30 dni")
+  end
+
   it "generates a unique token each time" do
     ad1 = Ad.sham!
     ad2 = Ad.sham!
