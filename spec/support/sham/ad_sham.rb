@@ -8,7 +8,9 @@ Sham.config(Ad) do |a|
       :ad_content => "Ja czesio#{rand(100)} piszę sobie tutaj ogłoszenie.",
       :category_id => 1,
       :price => "#{rand(10)}.44",
-      :level => 1
+      :level => 2,
+      :verification_date => Time.now,
+      :advertiser_id => 1
     }
   end
 end

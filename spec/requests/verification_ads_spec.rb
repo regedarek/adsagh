@@ -2,7 +2,7 @@
 require 'spec_helper'
 describe 'Verification' do
   before(:all) do
-    @ad1 = Ad.sham!(:advertiser_id => 1, :verification_date => Time.now)
+    @ad1 = Ad.sham!(:advertiser_id => 1, :verification_date => Time.now, :level => 2)
     @ad2 = Ad.sham!(:advertiser_id => 2)
     @admin = Admin.sham!
   end
@@ -35,15 +35,14 @@ describe 'Verification' do
       flash_notice!("Zweryfikowano pomyślnie!")
       last_email.to.should include(@ad2.email)
       visit root_path
-      # page.should have_selector(:title, :count => 2)
     end
 
     it "discard unverified ad" do
       log_in @admin
       page.should have_content @ad2.name
-      click_link "Odrzuć"
-      page.should have_content("Powód:")
-      fill_in "Powód", :with => "bo nie"
+      click_link @ad2.title
+      page.should have_content("Powód")
+      fill_in :discard_info, :with => "bo nie"
       click_button "Wyślij"
       last_email.body.should include("bo nie")
       current_path.should eql(verifications_path)

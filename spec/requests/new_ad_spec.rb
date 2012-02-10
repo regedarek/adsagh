@@ -3,15 +3,6 @@ require 'spec_helper'
 
 describe "New ad specs" do
   describe "On the root_path" do
-    it "listing all ads" do
-      @ads = Array.new(3) { Ad.sham!(:advertiser_id => 1, :verification_date => Time.now, :level => 2) }
-      Category.sham!
-      visit root_path
-      page.should have_selector("h1", :text => "tablica")
-      page!
-      page.should have_content(@ads.first.title)
-      page.should have_content(@ads.last.title)
-    end
 
     it 'goes to new ad path' do
       visit root_path

@@ -4,7 +4,7 @@ class AdsController < ApplicationController
   before_filter :load_ad, :only => [:edit, :update, :finish, :show, :confirm]
 
   def index
-    @ads = Ad.verified_ads
+    @ads = Ad.all
   end
 
   def new

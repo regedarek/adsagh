@@ -1,0 +1,3 @@
+class RideAd < Ad
+
+end

@@ -3,6 +3,7 @@ class Ad < ActiveRecord::Base
   belongs_to :admin
   has_many :photos
 
+  scope :regular,  :conditions => ["type IS NULL"]
   scope :confirmed_ads,  :conditions => ["advertiser_id IS NOT NULL"]
   scope :unconfirmed_ads,  :conditions => ["advertiser_id IS NULL"]
   scope :unverified_ads,  :conditions => ["advertiser_id IS NOT NULL AND verification_date IS NULL"]
@@ -12,14 +13,18 @@ class Ad < ActiveRecord::Base
   attr_accessible :title, :name, :phone_number, :email, :advertiser_id, :ad_content, :token, :verification_date, :category_id, :price, :display_counter, :photos_attributes
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
-
-
-  validates_presence_of :title, :name, :email, :ad_content, :price, :category_id
+  validates_presence_of :name, :email, :price, :category_id
+  validates_presence_of :title, :ad_content, :if => :is_regular?
+  validates_presence_of :from, :to, :unless => :is_regular?
   validates_length_of :name, :within => Settings.ad.min_name_size..Settings.ad.max_name_size
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates_numericality_of :price, :greater_than => 0, :less_than => 1000000  # http://stackoverflow.com/questions/4467224/rails-why-format-regex-validation-fails
 
   before_create { generate_token(:token) }
+
+  def is_regular?
+    self.type.nil?
+  end
 
   def send_edit_link
     AdMailer.send_edit_link(self).deliver
@@ -103,6 +108,7 @@ class Ad < ActiveRecord::Base
   end
 
   def discard!(discard_info)
+    self.update_attribute :verification_date, Time.now
     self.update_attribute :level, 0
     self.send_discard_info(discard_info)
   end
